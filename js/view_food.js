@@ -94,7 +94,7 @@ $(document).ready(function() {
   // Get food data and populate table on page load
   getFoodData();
 
-  // EVENT: Bind event to '.delete-food' click event to body so that dynamic element events also trigger
+  // EVENT: Bind '.delete-food' click event to body so that dynamic element events also trigger
   $("body").on("click", ".delete-food", function(event) {
     // Prevent buttons default action
     event.preventDefault();
