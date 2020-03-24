@@ -53,6 +53,12 @@ if (isset($_POST) && !empty($_POST)) {
 
 ?>
 <div id="main">
+
+  <!-- If an error is sent it is displayed -->
+  <?php if ($error != null) : ?>
+  <h3 class='error'><?php echo $error; ?></h3>
+  <?php endif; ?>
+
   <form class="login-form" method="post" action="login.php">
     <h2>Nutrition App</h2>
     <div class="form-group">

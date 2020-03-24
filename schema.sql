@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS nutrition;
 USE nutrition;
 CREATE TABLE IF NOT EXISTS users(
   user_id INT(64) PRIMARY KEY AUTO_INCREMENT,
-  user_username VARCHAR(40) NOT NULL,
+  user_username VARCHAR(20) NOT NULL,
   user_email VARCHAR(40) NOT NULL,
   user_password VARCHAR(255) NOT NULL,
   user_created DATETIME,

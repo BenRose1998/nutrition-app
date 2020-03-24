@@ -55,10 +55,11 @@
 /* Search results */
 .results {
   position: absolute;
-  top: 120px;
-  left: 9.3%;
+  top: 140px;
+  /* left: 9.3%; */
+  left: 17.4%;
   z-index: 9;
-  width: 73.1%;
+  width: 50.5%;
 }
 
 .results-item {

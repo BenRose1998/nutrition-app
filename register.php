@@ -1,11 +1,60 @@
 <?php
 require_once('includes/connect.php');
 
+// Load composer
+require_once('vendor/autoload.php');
+// bjeavons - zxcvbn-php password strength library used - https://github.com/bjeavons/zxcvbn-php
+use ZxcvbnPhp\Zxcvbn;
+
 $stylesheet = 'login.css';
 $header = 'Register';
 include_once('includes/header.php');
 
+// Checks if inputted email address already exists in database
+function checkEmailExists($pdo, $email)
+{
+  // Query
+  // Select user data for the specified email
+  $sql = 'SELECT *
+          FROM users
+          WHERE user_email = ?';
 
+  // Prepare and execute statement
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$email]);
+  $accounts = $stmt->fetchAll();
+
+  // If any accounts were returned return true
+  if (count($accounts) === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Checks if inputted email address already exists in database
+function checkUsernameExists($pdo, $username)
+{
+  // Query
+  // Select user data for the specified username
+  $sql = 'SELECT *
+          FROM users
+          WHERE user_username = ?';
+
+  // Prepare and execute statement
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$username]);
+  $accounts = $stmt->fetchAll();
+
+  // If any accounts were returned return true
+  if (count($accounts) === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Default the error variable to null
 $error = null;
 
 // Checks if the form has been submitted
@@ -19,14 +68,64 @@ if (isset($_POST) && !empty($_POST)) {
   if (empty($username) || empty($email) || empty($password) || empty($password2)) {
     $error = "Please fill in all information";
   } else {
+
+    // Checks if account with that username already exists in the database
+    if(checkUsernameExists($pdo, $username)){
+      $error = "Account with this username already exists";
+      // Skips the rest of the script and goes to error output
+      goto error;
+    }
+
+    // Checks if account with that email already exists in the database
+    if(checkEmailExists($pdo, $email)){
+      $error = "Account with this email address already exists";
+      // Skips the rest of the script and goes to error output
+      goto error;
+    }
+
     // Check if email address is not valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $error = "Email address invalid";
+      // Skips the rest of the script and goes to error output
+      goto error;
     }
+
     // Checks if passwords don't match and if so sends an error
     if ($password != $password2) {
       $error = "Passwords do not match";
+      // Skips the rest of the script and goes to error output
+      goto error;
     } else {
+
+      // Checks if password length is less than 8
+      if(strlen($password) < 8){
+        $error = "Passwords too short";
+        // Skips the rest of the script and goes to error output
+        goto error;
+      }
+
+      // ---------------------------------------------------------------------------------------------
+      // bjeavons - zxcvbn-php password strength library used - https://github.com/bjeavons/zxcvbn-php
+
+      // Store user's data in an array
+      $data = [
+        $username,
+        $email
+      ];
+      // Create an instance of the Zxcvbn object
+      $zxcvbn = new Zxcvbn();
+      // Call the passwordStrength test method, pass it the password and user's data
+      $strength = $zxcvbn->passwordStrength($password, $data);
+
+      // ---------------------------------------------------------------------------------------------
+
+      // If password strength is less than 3 an error is thrown
+      if($strength['score'] < 3){
+        $error = "Password too weak </br> Password Strength: " . $strength['score'] . "/4 - Must have a strength of at least 3 ";
+        // Skips the rest of the script and goes to error output
+        goto error;
+      }
+
       // If inputs aren't empty, email is valid and passwords match, the user's data is inserted into the database
       // Encrypts password
       $password = password_hash($password, PASSWORD_DEFAULT);
@@ -50,27 +149,33 @@ if (isset($_POST) && !empty($_POST)) {
 
 ?>
 
-<form class="login-form" action="register.php" method="post">
-  <h2>Register</h2>
-  <div class="form-group">
-    <label for="usernameInput">Username</label>
-    <input type="text" class="form-control" name="username" id="usernameInput">
-  </div>
-  <div class="form-group">
-    <label for="emailInput">Email address</label>
-    <input type="email" class="form-control" name="email" id="emailInput">
-  </div>
-  <div class="form-group">
-    <label for="passwordInput">Password</label>
-    <input type="password" class="form-control" name="password" id="passwordInput">
-  </div>
-  <div class="form-group">
-    <label for="passwordInput">Repeat Password</label>
-    <input type="password" class="form-control" name="password2" id="passwordInput2">
-  </div>
-  <button type="submit" class="btn">Submit</button>
-</form>
+<!-- If an error is sent it is displayed -->
+<?php error: if ($error != null) : ?>
+  <h5 class='error'><?php echo $error; ?></h5>
+  <?php endif; ?>
 
+<div id="main">
+  <form class="login-form" action="register.php" method="post">
+    <h2>Register</h2>
+    <div class="form-group">
+      <label for="usernameInput">Username <small>(max length: 20)</small></label>
+      <input type="text" class="form-control" name="username" id="usernameInput">
+    </div>
+    <div class="form-group">
+      <label for="emailInput">Email address <small>(max length: 40)</small></label>
+      <input type="email" class="form-control" name="email" id="emailInput">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password <small>(min length: 8)</small></label>
+      <input type="password" class="form-control" name="password" id="passwordInput">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Repeat Password <small>(min length: 8)</small></label>
+      <input type="password" class="form-control" name="password2" id="passwordInput2">
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
 <?php
 include('includes/footer.php');
 ?>
