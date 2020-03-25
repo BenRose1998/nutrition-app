@@ -67,6 +67,7 @@ if (isset($_POST) && !empty($_POST)) {
   // Checks if inputs are empty, if so sends an error
   if (empty($username) || empty($email) || empty($password) || empty($password2)) {
     $error = "Please fill in all information";
+    goto error;
   } else {
 
     // Checks if account with that username already exists in the database
@@ -105,7 +106,7 @@ if (isset($_POST) && !empty($_POST)) {
       }
 
       // ---------------------------------------------------------------------------------------------
-      // bjeavons - zxcvbn-php password strength library used - https://github.com/bjeavons/zxcvbn-php
+      // bjeavons - zxcvbn-php password strength library documentation used - https://github.com/bjeavons/zxcvbn-php
 
       // Store user's data in an array
       $data = [
@@ -117,11 +118,18 @@ if (isset($_POST) && !empty($_POST)) {
       // Call the passwordStrength test method, pass it the password and user's data
       $strength = $zxcvbn->passwordStrength($password, $data);
 
+      // Returns a password strength score between 0-4 (Weak - Strong)
+
       // ---------------------------------------------------------------------------------------------
 
-      // If password strength is less than 3 an error is thrown
-      if($strength['score'] < 3){
-        $error = "Password too weak </br> Password Strength: " . $strength['score'] . "/4 - Must have a strength of at least 3 ";
+      // If password strength is less than 2 an error is thrown
+      if($strength['score'] < 2){
+        // Create an array storing strings (password strengths)
+        $strengths = ['Very Poor', 'Weak'];
+        // Set password score to index of the strengths array (e.g. 0 = Very Poor)
+        $score = $strengths[$strength['score']];
+        // Print error
+        $error = "Password too weak </br> Password Strength: " . $score . " (" . $strength['score'] . ") - Must have a strength of at Okay (2)";
         // Skips the rest of the script and goes to error output
         goto error;
       }

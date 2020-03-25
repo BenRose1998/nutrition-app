@@ -15,6 +15,7 @@ if (isset($_POST) && !empty($_POST)) {
   // Checks if inputs are empty, if so sends an error
   if (empty($email) || empty($password)) {
     $error = "Please fill in all information";
+    goto error;
   } else {
     // // If inputs aren't empty the user's data is pulled from the database
 
@@ -43,10 +44,12 @@ if (isset($_POST) && !empty($_POST)) {
       } else {
         // If the password inputted by user did not match then an error is sent
         $error = "Invalid email or password";
+        goto error;
       }
     } else {
       // If no record found with that email then an error is sent
       $error = "Invalid email or password";
+      goto error;
     }
   }
 }
@@ -55,7 +58,7 @@ if (isset($_POST) && !empty($_POST)) {
 <div id="main">
 
   <!-- If an error is sent it is displayed -->
-  <?php if ($error != null) : ?>
+  <?php error: if ($error != null) : ?>
   <h3 class='error'><?php echo $error; ?></h3>
   <?php endif; ?>
 
