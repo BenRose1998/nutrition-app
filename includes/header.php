@@ -25,6 +25,9 @@ function redirect($url)
   <!-- Link css files -->
   <!-- Twitter Bootstrap from https://getbootstrap.com/ -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Font Awesome - available at https://fontawesome.com/ -->
+  <script src="https://kit.fontawesome.com/f2a72a8b1b.js" crossorigin="anonymous"></script>
+  <!-- Link main stylesheet -->
   <link rel="stylesheet" href="css/main.css">
   <!-- Link stylesheet -->
   <?php

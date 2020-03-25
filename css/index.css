@@ -1,0 +1,90 @@
+/* Big image */
+#bigimage {
+  height: 58vh;
+  background-image: url('../images/food_large_darken25.jpg');
+  background-position: center calc(50%);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;
+  color: white;
+  padding-top: center;
+  padding-bottom: auto;
+  position: relative;
+}
+
+button {
+  width: 30%;
+  font-size: 1.3rem !important;
+}
+
+.centre {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#bigimage h1 {
+  font-size: 80px;
+}
+
+#bigimage p {
+  font-size: 23px;
+  margin-top: 40px;
+  color: #22181C;
+}
+
+#bigimageButton {
+  margin-top: 2%;
+}
+
+/* Figures */
+
+#icons {
+  padding-top: 0.5%;
+}
+
+.icon {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  width: 25%;
+  vertical-align: baseline;
+  margin-top: 2%;
+  color: #00C301;
+}
+
+.icon i {
+  padding-bottom: 10%;
+}
+
+.icon p {
+  color: black;
+  font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 767px) {
+
+  /* Figures */
+  #bigimage {
+    background-size: 400%;
+    height: 95vh;
+  }
+
+  #bigimage h1 {
+    font-size: 4rem;
+  }
+
+  /* Icons */
+  .icon {
+    width: 100%;
+  }
+
+  .icon i {
+    font-size: 11em;
+  }
+
+}
