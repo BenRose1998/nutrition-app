@@ -5,6 +5,7 @@ $stylesheet = 'login.css';
 $header = 'Login';
 include_once('includes/header.php');
 
+// Default the error variable to null
 $error = null;
 
 // Checks if the form has been submitted
@@ -17,7 +18,7 @@ if (isset($_POST) && !empty($_POST)) {
     $error = "Please fill in all information";
     goto error;
   } else {
-    // // If inputs aren't empty the user's data is pulled from the database
+    // If inputs aren't empty the user's data is pulled from the database
 
     // Query
     // User's data is pulled from user table and their job title from employee table if they are in it
@@ -40,6 +41,7 @@ if (isset($_POST) && !empty($_POST)) {
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['username'] = $user->user_username;
         $_SESSION['email'] = $email;
+        // User is redirected to their dashboard
         redirect('dashboard.php');
       } else {
         // If the password inputted by user did not match then an error is sent

@@ -32,7 +32,7 @@ function checkEmailExists($pdo, $email)
   }
 }
 
-// Checks if inputted email address already exists in database
+// Checks if inputted username already exists in database
 function checkUsernameExists($pdo, $username)
 {
   // Query
@@ -67,8 +67,22 @@ if (isset($_POST) && !empty($_POST)) {
   // Checks if inputs are empty, if so sends an error
   if (empty($username) || empty($email) || empty($password) || empty($password2)) {
     $error = "Please fill in all information";
+    // Skips the rest of the script and goes to error output
     goto error;
   } else {
+    // Checks if username length is greater than 20
+    if(strlen($username) > 20){
+      $error = "Username too long";
+      // Skips the rest of the script and goes to error output
+      goto error;
+    }
+
+    // Checks if email length is greater than 40
+    if(strlen($email) > 40){
+      $error = "Email too long";
+      // Skips the rest of the script and goes to error output
+      goto error;
+    }
 
     // Checks if account with that username already exists in the database
     if(checkUsernameExists($pdo, $username)){
@@ -100,7 +114,7 @@ if (isset($_POST) && !empty($_POST)) {
 
       // Checks if password length is less than 8
       if(strlen($password) < 8){
-        $error = "Passwords too short";
+        $error = "Password too short";
         // Skips the rest of the script and goes to error output
         goto error;
       }
@@ -129,7 +143,9 @@ if (isset($_POST) && !empty($_POST)) {
         // Set password score to index of the strengths array (e.g. 0 = Very Poor)
         $score = $strengths[$strength['score']];
         // Print error
-        $error = "Password too weak </br> Password Strength: " . $score . " (" . $strength['score'] . ") - Must have a strength of at Okay (2)";
+        $error = "Password too weak </br> 
+        Password Strength: <strong>" . $score . "</strong> (" . $strength['score'] . ")
+         - Must have a strength of at least <strong>Okay</strong> (2)";
         // Skips the rest of the script and goes to error output
         goto error;
       }
@@ -138,7 +154,7 @@ if (isset($_POST) && !empty($_POST)) {
       // Encrypts password
       $password = password_hash($password, PASSWORD_DEFAULT);
 
-      // Get current data & time
+      // Get current data & time in SQL format
       $created = date('Y-m-d H:i:s');
 
       // Query
@@ -159,8 +175,8 @@ if (isset($_POST) && !empty($_POST)) {
 
 <!-- If an error is sent it is displayed -->
 <?php error: if ($error != null) : ?>
-  <h5 class='error'><?php echo $error; ?></h5>
-  <?php endif; ?>
+<h5 class='error'><?php echo $error; ?></h5>
+<?php endif; ?>
 
 <div id="main">
   <form class="login-form" action="register.php" method="post">
