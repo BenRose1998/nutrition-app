@@ -175,7 +175,7 @@ if (isset($_POST) && !empty($_POST)) {
 
 <!-- If an error is sent it is displayed -->
 <?php error: if ($error != null) : ?>
-<h5 class='error'><?php echo $error; ?></h5>
+<h3 class='error'><?php echo $error; ?></h3>
 <?php endif; ?>
 
 <div id="main">
