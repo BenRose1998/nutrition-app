@@ -71,8 +71,8 @@ $(document).ready(function() {
               .append(
                 $("<td>").text(food["food"]),
                 $("<td>").text(food["amount"]),
-                $("<td>").text(food["calories"].toFixed(1)),
-                $("<td>").text(food["protein"].toFixed(2) + "g"),
+                $("<td>").text(parseFloat(food["calories"]).toFixed(1)),
+                $("<td>").text(parseFloat(food["protein"]).toFixed(2) + "g"),
                 $("<td>").text(food["date"]),
                 // Add a button to remove the food, give it an id attribute
                 $("<td>").append(
