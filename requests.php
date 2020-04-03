@@ -18,6 +18,9 @@ if (isset($_GET['type'])) {
     case 'getNutrition':
       getNutrition($pdo);
       break;
+    case 'weeklyCalories':
+      weeklyCalories($pdo);
+      break;
     default:
       echo 'Bad Request';
       break;
@@ -57,6 +60,7 @@ function addFood($pdo)
 
 function getNutrition($pdo)
 {
+  // Store user id
   $user_id = $_SESSION['user_id'];
 
   // Get totals of all food items for current date for a specific user 
@@ -74,5 +78,27 @@ function getNutrition($pdo)
 
   if ($nutrition) {
     print_r(json_encode($nutrition));
+  }
+}
+
+function weeklyCalories($pdo){
+  // Store user id
+  $user_id = $_SESSION['user_id'];
+
+  // Gets total calories for a user over a week
+  $sql = "SELECT calories, DATE(food_added) AS 'food_added'
+          FROM users
+          INNER JOIN calculated_nutrition ON users.user_id = calculated_nutrition.user_id
+          WHERE users.user_id = ?
+          AND (DATE(food_added) <= CURDATE() AND DATE(food_added) > CURDATE() - 8)";
+
+  // Prepare and execute statement
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$user_id]);
+  // Saves result in object
+  $calories = $stmt->fetchAll();
+
+  if ($calories) {
+  print_r(json_encode($calories));
   }
 }

@@ -65,3 +65,178 @@ VALUES
     2000,
     60
   );
+-- Insert example foods (today)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+  (
+    1,
+    'bread',
+    'slice',
+    1.00,
+    4.00,
+    77.14,
+    0.97,
+    142.10,
+    2.57,
+    14.33,
+    1.64,
+    NOW()
+  ),
+  (
+    1,
+    'whiskey',
+    'shot',
+    1.00,
+    4.00,
+    97.02,
+    0.00,
+    0.42,
+    0.00,
+    0.00,
+    0.00,
+    NOW()
+  ),
+  (
+    1,
+    'toast',
+    'slice',
+    1.00,
+    5.00,
+    63.80,
+    0.88,
+    118.14,
+    1.98,
+    11.99,
+    1.36,
+    NOW()
+  );
+-- Insert example foods (Today -1)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+  (
+    1,
+    'banana',
+    'medium',
+    7.00,
+    2.00,
+    735.14,
+    2.73,
+    8.26,
+    9.00,
+    188.66,
+    101.02,
+    NOW() - INTERVAL 1 DAY
+  ),
+  (
+    1,
+    'cereal bar',
+    'bar',
+    1.00,
+    1.00,
+    126.54,
+    0.33,
+    5.92,
+    2.18,
+    28.71,
+    16.74,
+    NOW() - INTERVAL 1 DAY
+  ),
+  (
+    1,
+    'chicken',
+    'oz',
+    3.00,
+    1.00,
+    187.00,
+    11.11,
+    60.35,
+    20.37,
+    0.04,
+    0.00,
+    NOW() - INTERVAL 1 DAY
+  );
+
+  -- Insert example foods (Today -2)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+  (
+    1,
+    'banana',
+    'medium',
+    7.00,
+    2.00,
+    735.14,
+    2.73,
+    8.26,
+    9.00,
+    188.66,
+    101.02,
+    NOW() - INTERVAL 2 DAY
+  ),
+  (
+    1,
+    'cereal bar',
+    'bar',
+    1.00,
+    1.00,
+    126.54,
+    0.33,
+    5.92,
+    2.18,
+    28.71,
+    16.74,
+    NOW() - INTERVAL 2 DAY
+  ),
+  (
+    1,
+    'chicken',
+    'oz',
+    3.00,
+    1.00,
+    187.00,
+    11.11,
+    60.35,
+    20.37,
+    0.04,
+    0.00,
+    NOW() - INTERVAL 2 DAY
+  );
