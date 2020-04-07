@@ -38,6 +38,26 @@ $(document).ready(function () {
     }
   });
 
+  // Gets dates for the last 7 days, returns an aray
+  function getDates(){
+    // Create a moment.js date object to store a date (initialised at today)
+    let date = moment();
+
+    // Create a dates array, populate with the date of today (e.g. 20)
+    let dates = [date.date()];
+
+    // Loop 6 times
+    for (let index = 0; index <= 5; index++) {
+      // Decrement the date by 1 day
+      date.subtract(1, 'days');
+      // Push the decremented date's date (e.g. 19) into the array
+      dates.push(date.date());
+    }
+
+    // Reverse the array
+    return dates.reverse();
+  }
+
   // Get graph labels for days & dates for the last 7 days
   function getLabels() {
     const days = [
@@ -73,26 +93,13 @@ $(document).ready(function () {
     // Request - requests all calories for every food item added within 7 days
     $.ajax({
       type: "GET",
-      url: "requests.php?type=weeklyCalories",
+      url: "api.php?type=weeklyCalories",
       dataType: "json",
       headers: {},
       success: function (res) {
-        // Create a moment.js date object to store a date (initialised at today)
-        let date = moment();
-
-        // Create a dates array, populate with the date of today (e.g. 20)
-        let dates = [date.date()];
-
-        // Loop 6 times
-        for (let index = 0; index <= 5; index++) {
-          // Decrement the date by 1 day
-          date.subtract(1, 'days');
-          // Push the decremented date's date (e.g. 19) into the array
-          dates.push(date.date());
-        }
-
-        // Reverse the array
-        dates.reverse();
+        
+        // Call getDates functions - returns an array of dates of last 7 days
+        let dates = getDates();
 
         // Empty array
         let data = [];
@@ -128,7 +135,7 @@ $(document).ready(function () {
             }]
           },
           options: {
-
+            maintainAspectRatio: false
           }
         });
       }
@@ -140,26 +147,13 @@ $(document).ready(function () {
     // Request - requests all calories for every food item added within 7 days
     $.ajax({
       type: "GET",
-      url: "requests.php?type=weeklyProtein",
+      url: "api.php?type=weeklyProtein",
       dataType: "json",
       headers: {},
       success: function (res) {
-        // Create a moment.js date object to store a date (initialised at today)
-        let date = moment();
 
-        // Create a dates array, populate with the date of today (e.g. 20)
-        let dates = [date.date()];
-
-        // Loop 6 times
-        for (let index = 0; index <= 5; index++) {
-          // Decrement the date by 1 day
-          date.subtract(1, 'days');
-          // Push the decremented date's date (e.g. 19) into the array
-          dates.push(date.date());
-        }
-
-        // Reverse the array
-        dates.reverse();
+        // Call getDates functions - returns an array of dates of last 7 days
+        let dates = getDates();
 
         // Empty array
         let data = [];
@@ -194,7 +188,9 @@ $(document).ready(function () {
               fill: false
             }]
           },
-          options: {}
+          options: {
+            maintainAspectRatio: false
+          }
         });
       }
     });
@@ -206,26 +202,13 @@ $(document).ready(function () {
     // Request - requests all calories for every food item added within 7 days
     $.ajax({
       type: "GET",
-      url: "requests.php?type=weeklyNutrition",
+      url: "api.php?type=weeklyNutrition",
       dataType: "json",
       headers: {},
       success: function (res) {
-        // Create a moment.js date object to store a date (initialised at today)
-        let date = moment();
 
-        // Create a dates array, populate with the date of today (e.g. 20)
-        let dates = [date.date()];
-
-        // Loop 6 times
-        for (let index = 0; index <= 5; index++) {
-          // Decrement the date by 1 day
-          date.subtract(1, 'days');
-          // Push the decremented date's date (e.g. 19) into the array
-          dates.push(date.date());
-        }
-
-        // Reverse the array
-        dates.reverse();
+        // Call getDates functions - returns an array of dates of last 7 days
+        let dates = getDates();
 
         // Get keys of all values received (types - type(e.g. fat))
         const types = Object.keys(res[0]);
@@ -309,7 +292,9 @@ $(document).ready(function () {
               }
             ]
           },
-          options: {}
+          options: {
+            maintainAspectRatio: false
+          }
         });
       }
     });

@@ -1,7 +1,12 @@
 <?php
-$stylesheet = 'dashboard.css';
+
+
 $header = 'Dashboard';
+
 include_once('includes/header.php');
+
+echo '<link rel="stylesheet" href="css/dashboard.css">';
+echo '<link rel="stylesheet" href="css/search.css">';
 
 if (!isset($_SESSION['user_id'])) {
   redirect('index.php');
@@ -42,13 +47,16 @@ if (!isset($_SESSION['user_id'])) {
     <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
       <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
     </form>
-    <!-- Search results -->
-    <ul class="list-group results">
-    </ul>
     <!-- Button links -->
     <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
     <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
+    <!-- Search results -->
+    <ul class="list-group results">
+    </ul>
+    
   </div>
+
+  <!-- Charts -->
   <div class="row">
     <div class="col-md-5 chart-container" id="calories-chart">
       <canvas id="calories"></canvas>
@@ -56,7 +64,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 
-  <!-- Charts -->
   <div class="row">
     <div class="col-md-4 chart-container">
       <canvas id="nutrition"></canvas>

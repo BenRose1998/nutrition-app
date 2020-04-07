@@ -6,10 +6,14 @@ if (session_status() != PHP_SESSION_ACTIVE) {
   session_start();
 }
 
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-  redirect('index.php');
+  // Bad request - throw bad request error (400)
+  http_response_code(400);
+  exit();
 }
 
+// Execute different function depending on data requested
 if (isset($_GET['type'])) {
   switch ($_GET['type']) {
     case 'addFood':
@@ -17,6 +21,16 @@ if (isset($_GET['type'])) {
       break;
     case 'getNutrition':
       getNutrition($pdo);
+      break;
+    case 'viewFood':
+      if(isset($_GET['timestamp'])){
+        viewFood($pdo, $_GET['timestamp']);
+      }
+      break;
+    case 'removeFood':
+      if(isset($_GET['id'])){
+        removeFood($pdo, $_GET['id']);
+      }
       break;
     case 'weeklyCalories':
       weeklyFood($pdo, "calories");
@@ -28,11 +42,13 @@ if (isset($_GET['type'])) {
       weeklyFood($pdo, "carbohydrates, protein, fat, salt, sugar");
       break;
     default:
-      echo 'Bad Request';
+      // Bad request - throw bad request error (400)
+      http_response_code(400);
       break;
   }
 } else {
-  echo 'Bad Request';
+  // Bad request - throw bad request error (400)
+  http_response_code(400);
 }
 
 function addFood($pdo)
@@ -85,6 +101,69 @@ function getNutrition($pdo)
   if ($nutrition) {
     print_r(json_encode($nutrition));
   }
+}
+
+function viewFood($pdo, $timestamp){
+  // Convert passed date to SQL format
+  $date = date('Y-m-d', $_GET['timestamp']);
+
+  // Save reference to user id
+  $user_id = $_SESSION['user_id'];
+
+  // Query
+  // User's food data for the specified day is pulled from the database
+  $sql = 'SELECT *
+          FROM calculated_nutrition
+          WHERE user_id = ?
+          AND DATE(food_added) = ?';
+
+  // Prepare and execute statement
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$user_id, $date]);
+  // Saves results in object
+  $foods = $stmt->fetchAll();
+
+  // Create empty array for each food record to be added to
+  $data = [];
+  // Create a variable to store total number of calories for that day
+  $totalCalories = 0;
+  // Create a variable to store total amount of protein for that day
+  $totalProtein = 0;
+
+  // Only run if results where returned
+  if ($foods) {
+    // Loop through all food records
+    foreach ($foods as $food) {
+      $amount = $food->food_serving_quantity * $food->food_serving_base . " " . $food->food_serving_unit;
+      // Create an array of all food values
+      $foodData = ["id" => $food->food_id, "amount" => $amount , "food" => $food->food_name, "calories" => $food->calories, "protein" => $food->protein, "date" => $food->food_added];
+      // Insert foodData array into the data array
+      array_push($data, $foodData);
+      $totalCalories += $food->calories;
+      $totalProtein += $food->protein;
+    }
+  // Push an array of total calories and total protein to the end of the data array
+  array_push($data, ["total_calories" => $totalCalories, "total_protein" => $totalProtein]);
+  } else {
+    // No food found
+  }
+  // Encode data array to json and send as response to request
+  echo json_encode($data);
+}
+
+function removeFood($pdo, $id){
+  // Store user id
+  $user_id = $_SESSION['user_id'];
+
+  // Query
+  // If food item exists and belongs to this user it is deleted
+  $sql = 'DELETE FROM food
+          WHERE food_id = ?
+          AND user_id = ?';
+
+  // Prepare and execute statement
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([$id, $user_id]);
 }
 
 // Return a list of specific nutritional values (e.g. protein) of all food items for a user in a week

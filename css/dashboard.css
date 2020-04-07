@@ -1,9 +1,8 @@
 #search {
-  padding: 1%;
   margin-bottom: 2%;
 }
 
-.dashboard-btn {
+/*.dashboard-btn {
   background-color: #00c301;
   color: white;
   margin: 0;
@@ -31,28 +30,22 @@
 
 #modal-add-btn {
   margin-top: 2%;
-}
+} */
 
 .chart-container {
   padding: 0;
   margin: auto;
 }
 
-@media (min-width: 1200px) {
-  #main {
-    max-width: 2000px;
-  }
-}
+
 
 .chart-text {
   margin-top: 2%;
 }
 
-/* Search results */
-.results {
+/* .results {
   position: absolute;
   top: 140px;
-  /* left: 9.3%; */
   left: 17.4%;
   z-index: 9;
   width: 50.5%;
@@ -70,25 +63,32 @@
 .result-img {
   max-width: 6%;
   max-height: 6%;
+} */
+
+@media (min-width: 1200px) {
+  #main {
+    max-width: 2000px;
+  }
 }
 
 /* Tablets */
-@media only screen and (min-device-width : 768px)  and (max-width: 1024px)  {
-  #main{
-    width:100%;
+@media only screen and (min-device-width : 768px) and (max-width: 1024px) {
+  #main {
+    width: 100%;
     margin: 0;
     padding: 0;
   }
+
   .container {
-    width:100%;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
 
   .dashboard-btn {
-    font-size:70%;
+    font-size: 70%;
     padding: 0;
-    padding-top:1.5%;
+    padding-top: 1.5%;
   }
 
   .row {
@@ -96,8 +96,8 @@
     padding: 0;
   }
 
-  #nav-content{
-    width:100%;
+  #nav-content {
+    width: 100%;
     margin: 0;
     padding: 0;
 
@@ -146,8 +146,8 @@
     width: 100%;
   }
 
-  #nav-content{
-    width:100%;
+  #nav-content {
+    width: 100%;
     margin: 0;
     padding: 0;
 

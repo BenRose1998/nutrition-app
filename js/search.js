@@ -20,15 +20,19 @@ $(document).ready(function () {
     // Request
     $.ajax({
       type: "POST",
-      url: "requests.php?type=addFood",
+      url: "api.php?type=addFood",
       headers: {},
       data: request,
       success: function (res) {
         console.log("Request: " + res);
 
         console.log("Posted to server");
+
         // Update nutrition charts
-        updateCharts();
+        // Only call this function if it exists (user is on the dashboard page)
+        if (typeof updateCharts == 'function') { 
+          updateCharts(); 
+        }
       }
     });
   }
@@ -169,8 +173,5 @@ $(document).ready(function () {
       }
     });
   });
-
-
-
 
 });

@@ -41,7 +41,7 @@ $(document).ready(function() {
     // Request
     $.ajax({
       type: "GET",
-      url: "request_food.php?",
+      url: "api.php?type=viewFood",
       data: "timestamp=" + timestamp,
       dataType: "json",
       headers: {},
@@ -103,7 +103,7 @@ $(document).ready(function() {
     // Log food to be deleted
     console.log("Deleting " + food_id + "...");
     // Send request to remove food from DB
-    $.post("removeFood.php", { id: food_id }, function(ret) {
+    $.get("api.php?type=removeFood", { id: food_id }, function(ret) {
       console.log(ret);
       // Get food data to retrieve new values after food has been deleted
       getFoodData();

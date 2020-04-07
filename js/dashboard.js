@@ -10,7 +10,7 @@ function updateCharts() {
   // Request
   $.ajax({
     type: "GET",
-    url: "requests.php?type=getNutrition",
+    url: "api.php?type=getNutrition",
     headers: {},
     success: function (res) {
       console.log(res);
