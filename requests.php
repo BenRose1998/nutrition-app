@@ -19,7 +19,13 @@ if (isset($_GET['type'])) {
       getNutrition($pdo);
       break;
     case 'weeklyCalories':
-      weeklyCalories($pdo);
+      weeklyFood($pdo, "calories");
+      break;
+    case 'weeklyProtein':
+      weeklyFood($pdo, "protein");
+      break;
+    case 'weeklyNutrition':
+      weeklyFood($pdo, "carbohydrates, protein, fat, salt, sugar");
       break;
     default:
       echo 'Bad Request';
@@ -81,12 +87,13 @@ function getNutrition($pdo)
   }
 }
 
-function weeklyCalories($pdo){
+// Return a list of specific nutritional values (e.g. protein) of all food items for a user in a week
+function weeklyFood($pdo, $type){
   // Store user id
   $user_id = $_SESSION['user_id'];
 
-  // Gets total calories for a user over a week
-  $sql = "SELECT calories, DATE(food_added) AS 'food_added'
+  // Gets total (e.g. calorie) values for all food items for a user over a week
+  $sql = "SELECT " . $type . ", DATE(food_added) AS 'food_added'
           FROM users
           INNER JOIN calculated_nutrition ON users.user_id = calculated_nutrition.user_id
           WHERE users.user_id = ?
@@ -96,9 +103,9 @@ function weeklyCalories($pdo){
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$user_id]);
   // Saves result in object
-  $calories = $stmt->fetchAll();
+  $foods = $stmt->fetchAll();
 
-  if ($calories) {
-  print_r(json_encode($calories));
+  if ($foods) {
+    print_r(json_encode($foods));
   }
 }

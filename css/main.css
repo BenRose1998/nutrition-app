@@ -21,6 +21,21 @@
   color: white !important;
 }
 
+input{
+  border-radius: 0px !important;
+}
+
+.nav-tabs>.nav-item>.nav-link{
+  border-radius: 0px !important;
+  color: #00c301 !important;
+}
+
+
+/* .nav-tabs>.nav-item>.nav-link.active{
+  background-color: #00c301;
+  color: white !important;
+} */
+
 .btn {
   font-size: 15px;
   padding: 8px 16px;
