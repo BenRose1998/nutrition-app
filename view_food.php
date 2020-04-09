@@ -45,17 +45,18 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar -->
   <div class="row justify-content-center" id="search">
+    <a href="dashboard.php" class="btn dashboard-btn" role="button" id="home-btn"><i class="fas fa-home fa-1x"></i></a>
     <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
       <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
     </form>
-    <!-- Search results -->
-    <ul class="list-group results">
-    </ul>
     <!-- Button links -->
     <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
     <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
-  </div>
+    <!-- Search results -->
+    <ul class="list-group results">
+    </ul>
 
+  </div>
 
   <!-- <h2 id="date-title">Food</h2> -->
   <div class="row">
@@ -68,17 +69,10 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 
-  <div class="container day-info-div">
-    <div class="row justify-content-center">
-      <ul class="list-group col-md-6 day-info">
-        <li class="list-group-item day-info" id="day-calories">Calories: 0</li>
-      </ul>
-      <ul class="list-group col-md-6 day-info">
-        <li class="list-group-item day-info" id="day-protein">Protein: 0g</li>
-      </ul>
-    </div>
+  <div class="row justify-content-center">
+    <p class="day-info col-lg-6" id="day-calories">Calories: 0</p>
+    <p class="day-info col-lg-6" id="day-protein">Protein: 0g</p>
   </div>
-
 
   <table class="table">
     <thead class="thead">

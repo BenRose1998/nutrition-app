@@ -51,3 +51,7 @@ thead {
 table {
   table-layout: fixed;
 }
+
+.results {
+  left: 19.1% !important;
+}

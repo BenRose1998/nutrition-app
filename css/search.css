@@ -13,6 +13,10 @@
   line-height: 200%;
 }
 
+#home-btn{
+  font-size:1rem;
+}
+
 /* Search results */
 .results {
   position: absolute;

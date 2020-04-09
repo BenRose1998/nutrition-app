@@ -45,6 +45,7 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar -->
   <div class="row justify-content-center" id="search">
+    <a href="dashboard.php" class="btn dashboard-btn" role="button" id="home-btn"><i class="fas fa-home fa-1x"></i></a>
     <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
       <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
     </form>
