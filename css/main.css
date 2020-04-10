@@ -36,7 +36,7 @@ input{
   color: white !important;
 } */
 
-.btn {
+.button {
   font-size: 15px;
   padding: 8px 16px;
   border: none;
@@ -47,7 +47,14 @@ input{
   border-radius: 0 !important;
 }
 
-.btn:hover {
+.btn-green{
+  color: #fff;
+  background-color: #00c301;
+  border-color: #00c301;
+  border-radius: 0 !important;
+}
+
+.button:hover {
   color: white;
   background-color: #00af00;
 }

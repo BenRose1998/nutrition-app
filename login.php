@@ -74,8 +74,8 @@ if (isset($_POST) && !empty($_POST)) {
       <label for="passwordInput">Password</label>
       <input type="password" class="form-control" name="password" id="passwordInput">
     </div>
-    <button type="submit" class="btn">Login</button>
-    <a href="register.php" class="btn" role="button" id="">Register</a>
+    <button type="submit" class="button">Login</button>
+    <a href="register.php" class="button" role="button" id="">Register</a>
   </form>
 </div>
 

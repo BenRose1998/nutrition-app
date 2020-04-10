@@ -42,19 +42,44 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="container" id="main">
 
-  <!-- Search bar -->
-  <div class="row justify-content-center" id="search">
-    <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
-      <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
+  <nav class="navbar col-12" id="search-form">
+    <form class="form col-10 m-0 p-0" id="search-form">
+      <input class="form-control search m-0" id="search" type="search" placeholder="Search food...">
     </form>
-    <!-- Button links -->
-    <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
-    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
-    <!-- Search results -->
+
+
+
+    <form class="form col-2">
+      <!-- <a href="view_food.php" class="col-1 btn " role="button">My Food</a> -->
+      <!-- <a href="statistics.php" class="col-1 btn " role="button">Statistics</a> -->
+      <a href="view_food.php" class="btn btn-green" role="button">View Food</a>
+      <a href="statistics.php" class="btn btn-green" role="button">Statistics</a>
+    </form>
+
     <ul class="list-group results">
     </ul>
+  </nav>
+
+
+
+
+
+
+
+
+  <!-- Search bar -->
+  <!-- <div class="row justify-content-center" id="search">
+    <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
+      <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
+    </form> -->
+    <!-- Button links -->
+    <!-- <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
+    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a> -->
+    <!-- Search results -->
+    <!-- <ul class="list-group results">
+    </ul>
     
-  </div>
+  </div> -->
 
   <!-- Charts -->
   <div class="row">

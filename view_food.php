@@ -50,8 +50,8 @@ if (!isset($_SESSION['user_id'])) {
       <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
     </form>
     <!-- Button links -->
-    <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
-    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
+    <a href="view_food.php" class="button col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
+    <a href="statistics.php" class="button col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
     <!-- Search results -->
     <ul class="list-group results">
     </ul>
@@ -61,11 +61,11 @@ if (!isset($_SESSION['user_id'])) {
   <!-- <h2 id="date-title">Food</h2> -->
   <div class="row">
     <div class="col-md-3">
-      <a href="" class="btn" role="button" id="previous-btn">Previous</a>
+      <a href="" class="button" role="button" id="previous-btn">Previous</a>
     </div>
     <h3 class="col-md-6" id="date">Date</h3>
     <div class="col-md-3">
-      <a href="" class="btn" role="button" id="next-btn">Next</a>
+      <a href="" class="button" role="button" id="next-btn">Next</a>
     </div>
   </div>
 

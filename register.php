@@ -197,7 +197,7 @@ if (isset($_POST) && !empty($_POST)) {
       <label for="passwordInput">Repeat Password <small>(min length: 8)</small></label>
       <input type="password" class="form-control" name="password2" id="passwordInput2">
     </div>
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" class="button">Submit</button>
   </form>
 </div>
 <?php

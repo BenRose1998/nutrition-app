@@ -127,10 +127,15 @@ $(document).ready(function() {
     // Prevent buttons default action
     event.preventDefault();
 
-    // Increment date by one day
-    date.setDate(date.getDate() + 1);
+    // Only increment date if it is not currently equal to today's date
+    // Don't let the user view future dates
+    if(date.getDate() != new Date().getDate()){
+      // Increment date by one day
+      date.setDate(date.getDate() + 1);
 
-    // Get food data and populate table
-    getFoodData();
+      // Get food data and populate table
+      getFoodData();
+    }
+
   });
 });

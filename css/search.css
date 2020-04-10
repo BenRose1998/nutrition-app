@@ -1,5 +1,10 @@
 #search {
   padding: 1%;
+  height: 5%;
+}
+
+.btn-green{
+  padding: 5%;
 }
 
 .dashboard-btn {
@@ -13,10 +18,6 @@
   line-height: 200%;
 }
 
-#home-btn{
-  font-size:1rem;
-}
-
 /* Search results */
 .results {
   position: absolute;
@@ -26,6 +27,8 @@
   z-index: 9;
   width: 50.5%;
 }
+
+
 
 .results-item {
   width: 100%;
@@ -58,4 +61,104 @@
 
 #modal-add-btn {
   margin-top: 2%;
+}
+
+@media (min-width: 1200px) {
+  #main {
+    max-width: 2000px;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-device-width : 768px) and (max-width: 1024px) {
+  #main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0;
+    max-width: 2000px;
+    padding: 0;
+  }
+
+  .dashboard-btn {
+    font-size: 70%;
+    padding: 0;
+    padding-top: 1.5%;
+  }
+
+  .row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  #nav-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+
+}
+
+/* Small devices */
+@media only screen and (max-width: 767px) {
+  #main {
+    width: 100%;
+    margin: auto;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+
+  #search-form {
+    width: 70%;
+    padding: 0;
+  }
+
+  .dashboard-btn {
+    width: 22%;
+    margin: 0;
+    margin-left: 2%;
+    padding-left: 0.7%;
+    padding-right: 0.7%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    line-height: 200%;
+  }
+
+  .results {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+  }
+
+  #nav-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  #foodButton, #statisticsButton{
+    display: none;
+  }
+
+  #homeButton{
+    margin-left:0;
+    margin-right:2%;
+  }
 }

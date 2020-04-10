@@ -45,16 +45,16 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar -->
   <div class="row justify-content-center" id="search">
-    <a href="dashboard.php" class="btn dashboard-btn" role="button" id="home-btn"><i class="fas fa-home fa-1x"></i></a>
-    <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
+    <a href="dashboard.php" class="col-lg-1 col-md-1 col-sm-1 btn dashboard-btn" role="button" id="homeButton"><i class="fas fa-caret-left"></i> Back</a>
+    <form class="col-lg-8 col-md-9 col-sm-10" id="search-form">
       <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
     </form>
     <!-- Search results -->
     <ul class="list-group results">
     </ul>
     <!-- Button links -->
-    <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
-    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
+    <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-1 dashboard-btn" id="foodButton" role="button">My Food</a>
+    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-1 dashboard-btn" id="statisticsButton" role="button">Statistics</a>
   </div>
 
 
