@@ -20,17 +20,6 @@ body {
   padding-right:auto;
 }
 
-.button{
-  font-size: 15px;
-  padding: 8px 16px;
-  border:none;
-  background-color: #00C301;
-  color: white;
-  font-weight: bold;
-  display: inline-block;
-  border-radius: 0 !important;
-}
-
 .login-form h2{
   text-align: center;
   padding-bottom: 20px;

@@ -42,44 +42,20 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="container" id="main">
 
-  <nav class="navbar col-12" id="search-form">
-    <form class="form col-10 m-0 p-0" id="search-form">
-      <input class="form-control search m-0" id="search" type="search" placeholder="Search food...">
-    </form>
-
-
-
-    <form class="form col-2">
-      <!-- <a href="view_food.php" class="col-1 btn " role="button">My Food</a> -->
-      <!-- <a href="statistics.php" class="col-1 btn " role="button">Statistics</a> -->
+  <!-- Search bar nav -->
+  <nav class="navbar navbar-light navbar-expand-lg" id="search-form">
+    <input class="col-lg-10 col-md-9 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
+      placeholder="Search food...">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-lg-2" id="navbarNavDropdown">
       <a href="view_food.php" class="btn btn-green" role="button">View Food</a>
       <a href="statistics.php" class="btn btn-green" role="button">Statistics</a>
-    </form>
-
-    <ul class="list-group results">
-    </ul>
+    </div>
   </nav>
-
-
-
-
-
-
-
-
-  <!-- Search bar -->
-  <!-- <div class="row justify-content-center" id="search">
-    <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
-      <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
-    </form> -->
-    <!-- Button links -->
-    <!-- <a href="view_food.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
-    <a href="statistics.php" class="btn col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a> -->
-    <!-- Search results -->
-    <!-- <ul class="list-group results">
-    </ul>
-    
-  </div> -->
+  <ul class="list-group results"></ul>
 
   <!-- Charts -->
   <div class="row">

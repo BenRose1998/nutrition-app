@@ -8,7 +8,7 @@ include_once('includes/header.php');
   <section id="bigimage">
     <div class="centre">
       <h1>Nutrition App</h1>
-      <a href="register.php"><button type="button" id="bigimageButton" class="btn">Register</button></a>
+      <a href="register.php" class="btn btn-green" role="button" id="bigimageButton">Register</a>
     </div>
   </section>
 </div>

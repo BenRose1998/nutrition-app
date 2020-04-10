@@ -41,24 +41,22 @@ if (!isset($_SESSION['user_id'])) {
 
 
 <div class="container" id="main">
-  <!-- <a href="dashboard.php">Back to My Nutrition</a> -->
 
-  <!-- Search bar -->
-  <div class="row justify-content-center" id="search">
-    <a href="dashboard.php" class="btn dashboard-btn" role="button" id="home-btn"><i class="fas fa-home fa-1x"></i></a>
-    <form class="col-lg-8 col-md-9 col-sm-8" id="search-form">
-      <input class="form-control form-control-lg search" type="text" placeholder="Search food...">
-    </form>
-    <!-- Button links -->
-    <a href="view_food.php" class="button col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">My Food</a>
-    <a href="statistics.php" class="button col-lg-1 col-md-1 col-sm-2 dashboard-btn" role="button">Statistics</a>
-    <!-- Search results -->
-    <ul class="list-group results">
-    </ul>
+  <!-- Search bar nav -->
+  <nav class="navbar navbar-light navbar-expand-lg" id="search-form">
+    <input class="col-lg-10 col-md-9 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
+      placeholder="Search food...">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-lg-2" id="navbarNavDropdown">
+      <a href="view_food.php" class="btn btn-green" role="button">View Food</a>
+      <a href="statistics.php" class="btn btn-green" role="button">Statistics</a>
+    </div>
+  </nav>
+  <ul class="list-group results"></ul>
 
-  </div>
-
-  <!-- <h2 id="date-title">Food</h2> -->
   <div class="row">
     <div class="col-md-3">
       <a href="" class="button" role="button" id="previous-btn">Previous</a>

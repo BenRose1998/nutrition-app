@@ -12,11 +12,6 @@
   position: relative;
 }
 
-button {
-  width: 30%;
-  font-size: 1.3rem !important;
-}
-
 .centre {
   margin: 0;
   position: absolute;
@@ -38,6 +33,8 @@ button {
 
 #bigimageButton {
   margin-top: 2%;
+  width: 30%;
+  font-size: 1.3rem !important;
 }
 
 /* Figures */

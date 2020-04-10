@@ -1,9 +1,9 @@
 #search {
-  padding: 1%;
-  height: 5%;
+  padding: 0.9% !important;
+  height: 1%;
 }
 
-.btn-green{
+.btn-green {
   padding: 5%;
 }
 
@@ -26,6 +26,10 @@
   left: 17.4%;
   z-index: 9;
   width: 50.5%;
+}
+
+.btn-green{
+  margin-right: 3%;
 }
 
 
@@ -123,8 +127,13 @@
   }
 
   #search-form {
-    width: 70%;
-    padding: 0;
+    width: 100%;
+    padding: 3.5%;
+    padding-top:1%;
+  }
+
+  #search {
+    width: 80%;
   }
 
   .dashboard-btn {
@@ -153,12 +162,13 @@
 
   }
 
-  #foodButton, #statisticsButton{
+  #foodButton,
+  #statisticsButton {
     display: none;
   }
 
-  #homeButton{
-    margin-left:0;
-    margin-right:2%;
+  #homeButton {
+    margin-left: 0;
+    margin-right: 2%;
   }
 }

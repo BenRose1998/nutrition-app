@@ -21,11 +21,11 @@
   color: white !important;
 }
 
-input{
+input {
   border-radius: 0px !important;
 }
 
-.nav-tabs>.nav-item>.nav-link{
+.nav-tabs>.nav-item>.nav-link {
   border-radius: 0px !important;
   color: #00c301 !important;
 }
@@ -47,25 +47,28 @@ input{
   border-radius: 0 !important;
 }
 
-.btn-green{
+.btn-green {
   color: #fff;
   background-color: #00c301;
   border-color: #00c301;
   border-radius: 0 !important;
 }
 
-.button:hover {
+.btn-green:hover {
+  text-decoration: none;
   color: white;
   background-color: #00af00;
 }
 
 @media only screen and (max-width: 767px) {
-  .container{
-    margin:0;
-    padding:0;
+  .container {
+    margin: 0;
+    padding: 0;
+    max-width: 767px;
   }
 
-  #nav-content{
-    width:100%;
+  #nav-content {
+    width: 100%;
   }
 }
+
