@@ -101,6 +101,8 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
+		  
+		console.log(res);
         // If no response print error
         if(res.length == 0){
           console.log("failed");
@@ -124,13 +126,13 @@ $(document).ready(function () {
             // Check if the food's date matches the date
             if (food.food_added.date() == d) {
               // Add this food's calories to the day's total
-              total += food.calories;
+              total += parseFloat(food.calories);
             }
           });
           // Push this day's calories into the data array
-          data.push(total);
+          data.push(parseFloat(total).toFixed(2));
         });
-
+		console.log(data);
         // Form chart
         chart = new Chart(graph, {
           type: 'bar',
@@ -183,11 +185,11 @@ $(document).ready(function () {
             // Check if the food's date matches the date
             if (food.food_added.date() == d) {
               // Add this food's calories to the day's total
-              total += food.protein;
+              total += parseFloat(food.protein);
             }
           });
           // Push this day's calories into the data array
-          data.push(total);
+          data.push(parseFloat(total).toFixed(2));
         });
 
         // Form chart
@@ -256,17 +258,17 @@ $(document).ready(function () {
                 // If nutrition type is salt, divide value by 1000 to convert from milligrams to grams
                 if(type == 'salt'){
                   // Add this food's value to the day's total
-                  total += (food[type] / 1000);
+                  total += parseFloat(food[type] / 1000);
                 }else{
                   // Add this food's value to the day's total
-                  total += food[type];
+                  total += parseFloat(food[type]);
                 }
                 
                 
               }
             });
             // Push this day's total into the type_data array
-            type_data.push(total.toFixed(2));
+            type_data.push(parseFloat(total).toFixed(2));
           });
           // At to data object with key of this type (e.g. data.fat)
           data[type] = type_data;
