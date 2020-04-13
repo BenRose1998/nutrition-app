@@ -51,11 +51,12 @@ if (!isset($_SESSION['user_id'])) {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse col-lg-2" id="navbarNavDropdown">
-      <a href="view_food.php" class="btn btn-green" role="button">View Food</a>
-      <a href="statistics.php" class="btn btn-green" role="button">Statistics</a>
+      <a href="view_food.php" class="btn btn-green col-6" role="button">View Food</a>
+      <a href="statistics.php" class="btn btn-green col-6" role="button">Statistics</a>
     </div>
+    <ul class="list-group results"></ul>
   </nav>
-  <ul class="list-group results"></ul>
+
 
   <!-- Charts -->
   <div class="row">
