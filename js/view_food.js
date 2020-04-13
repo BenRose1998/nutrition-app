@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   console.log("View food script running");
 
   // Get food data from server
@@ -45,7 +45,7 @@ $(document).ready(function() {
       data: "timestamp=" + timestamp,
       dataType: "json",
       headers: {},
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         if (res.length == 0) {
           // Clear the table
@@ -65,23 +65,32 @@ $(document).ready(function() {
           // Clear the table
           $("tbody").empty();
           // Foreach item in res object
-          $.each(res, function(key, food) {
-            // Create a table tow element and append all data as table data elements
-            var $tr = $("<tr>")
-              .append(
-                $("<td>").text(food["food"]),
-                $("<td>").text(food["amount"]),
-                $("<td>").text(parseFloat(food["calories"]).toFixed(1)),
-                $("<td>").text(parseFloat(food["protein"]).toFixed(2) + "g"),
-                $("<td>").text(food["date"]),
-                // Add a button to remove the food, give it an id attribute
-                $("<td>").append(
-                  '<a href="" id="' +
-                    food["id"] +
-                    '" class="btn delete-food" role="button">X</a>'
+          $.each(res, function (key, food) {
+            if ($(window).width() <= 768) {
+              // Create a table row element and append all data as table data elements
+              var $tr = $("<tr>")
+                .append(
+                  $("<td>").text(food["food"]),
+                  $("<td>").text(food["amount"]),
+                  $("<td>").text(parseFloat(food["calories"]).toFixed(1)),
+                  // Add a button to remove the food, give it an id attribute
+                  $("<td>").append('<a href="" id="' + food["id"] + '" class="btn btn-green delete-food" role="button">X</a>')
                 )
-              )
-              .appendTo("tbody");
+                .appendTo("tbody");
+            } else {
+              // Create a table row element and append all data as table data elements
+              var $tr = $("<tr>")
+                .append(
+                  $("<td>").text(food["food"]),
+                  $("<td>").text(food["amount"]),
+                  $("<td>").text(parseFloat(food["calories"]).toFixed(1)),
+                  $("<td>").text(parseFloat(food["protein"]).toFixed(2) + "g"),
+                  $("<td>").text(food["date"]),
+                  // Add a button to remove the food, give it an id attribute
+                  $("<td>").append('<a href="" id="' + food["id"] + '" class="btn btn-green delete-food" role="button">X</a>')
+                )
+                .appendTo("tbody");
+            }
           });
         }
       }
@@ -95,7 +104,7 @@ $(document).ready(function() {
   getFoodData();
 
   // EVENT: Bind '.delete-food' click event to body so that dynamic element events also trigger
-  $("body").on("click", ".delete-food", function(event) {
+  $("body").on("click", ".delete-food", function (event) {
     // Prevent buttons default action
     event.preventDefault();
     // Store button's food id
@@ -103,7 +112,9 @@ $(document).ready(function() {
     // Log food to be deleted
     console.log("Deleting " + food_id + "...");
     // Send request to remove food from DB
-    $.get("api.php?type=removeFood", { id: food_id }, function(ret) {
+    $.get("api.php?type=removeFood", {
+      id: food_id
+    }, function (ret) {
       console.log(ret);
       // Get food data to retrieve new values after food has been deleted
       getFoodData();
@@ -111,7 +122,7 @@ $(document).ready(function() {
   });
 
   // EVENT: previous day button clicked
-  $("#previous-btn").on("click", function(event) {
+  $("#previous-btn").on("click", function (event) {
     // Prevent buttons default action
     event.preventDefault();
 
@@ -123,13 +134,13 @@ $(document).ready(function() {
   });
 
   // EVENT: When next day button clicked
-  $("#next-btn").on("click", function(event) {
+  $("#next-btn").on("click", function (event) {
     // Prevent buttons default action
     event.preventDefault();
 
     // Only increment date if it is not currently equal to today's date
     // Don't let the user view future dates
-    if(date.getDate() != new Date().getDate()){
+    if (date.getDate() != new Date().getDate()) {
       // Increment date by one day
       date.setDate(date.getDate() + 1);
 

@@ -44,27 +44,30 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar nav -->
   <nav class="navbar navbar-light navbar-expand-lg" id="search-form">
-    <input class="col-lg-10 col-md-9 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
+    <input class="col-lg-9 col-md-8 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
       placeholder="Search food...">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse col-lg-2" id="navbarNavDropdown">
-      <a href="view_food.php" class="btn btn-green col-6" role="button">View Food</a>
-      <a href="statistics.php" class="btn btn-green col-6" role="button">Statistics</a>
+    <div class="collapse navbar-collapse col-lg-3 col-md-4" id="navbarNavDropdown">
+      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">My Nutrition</a>
+      <a href="view_food.php" class="btn btn-green col-lg-4 search-btn" role="button">View Food</a>
+      <a href="statistics.php" class="btn btn-green col-lg-4 search-btn" role="button">Statistics</a>
     </div>
     <ul class="list-group results"></ul>
   </nav>
-  
 
   <div class="row">
-    <div class="col-md-3">
-      <a href="" class="button" role="button" id="previous-btn">Previous</a>
+    <div class="col-md-3 col-sm-4">
+      <!-- <a href="" class="button" role="button" id="previous-btn">Previous</a> -->
+      <a href="" class="btn btn-green" role="button" id="previous-btn">Previous</a>
     </div>
-    <h3 class="col-md-6" id="date">Date</h3>
-    <div class="col-md-3">
-      <a href="" class="button" role="button" id="next-btn">Next</a>
+    <h3 class="col-md-6 col-sm-4" id="date">Date</h3>
+    <div class="col-md-3 col-sm-4">
+      <!-- <a href="" class="button" role="button" id="next-btn">Next</a> -->
+      <a href="" class="btn btn-green" role="button" id="next-btn">Next</a>
+
     </div>
   </div>
 
@@ -73,7 +76,8 @@ if (!isset($_SESSION['user_id'])) {
     <p class="day-info col-lg-6" id="day-protein">Protein: 0g</p>
   </div>
 
-  <table class="table">
+  <!-- Desktop table -->
+  <table class="table" id="desktop-table">
     <thead class="thead">
       <tr>
         <th>Food</th>
@@ -88,6 +92,24 @@ if (!isset($_SESSION['user_id'])) {
 
     </tbody>
   </table>
+
+  
+  <!-- Mobile table -->
+  <table class="table" id="mobile-table">
+    <thead class="thead">
+      <tr>
+        <th>Food</th>
+        <th>Amount</th>
+        <th>Calories</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+
 </div>
 
 <?php

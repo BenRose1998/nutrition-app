@@ -1,14 +1,4 @@
-@media only screen and (max-width: 768px) {
-  #main {
-    width: 100%;
-    padding: 1%;
-  }
-}
-@media (min-width: 1200px) {
-  #main {
-    max-width: 2000px;
-  }
-}
+
 
 #back-btn {
   margin-bottom: 1%;
@@ -48,10 +38,39 @@ thead {
   margin-bottom: 1%;
 }
 
-table {
+
+/* Tables */
+table{
   table-layout: fixed;
+  width:100%;
 }
 
-/* .results {
-  left: 19.1% !important;
-} */
+#desktop-table {
+  display: table;
+}
+
+#mobile-table {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #main {
+    width: 100%;
+    padding: 1%;
+  }
+
+  /* Tables */
+  #desktop-table  {
+    display: none;
+}
+  #mobile-table {
+    display: table;
+}
+
+
+}
+@media (min-width: 1200px) {
+  #main {
+    max-width: 2000px;
+  }
+}

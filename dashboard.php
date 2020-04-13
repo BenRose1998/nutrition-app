@@ -44,15 +44,16 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar nav -->
   <nav class="navbar navbar-light navbar-expand-lg" id="search-form">
-    <input class="col-lg-10 col-md-9 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
+    <input class="col-lg-9 col-md-8 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
       placeholder="Search food...">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse col-lg-2" id="navbarNavDropdown">
-      <a href="view_food.php" class="btn btn-green col-6" role="button">View Food</a>
-      <a href="statistics.php" class="btn btn-green col-6" role="button">Statistics</a>
+    <div class="collapse navbar-collapse col-lg-3 col-md-4" id="navbarNavDropdown">
+      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">My Nutrition</a>
+      <a href="view_food.php" class="btn btn-green col-lg-4 search-btn" role="button">View Food</a>
+      <a href="statistics.php" class="btn btn-green col-lg-4 search-btn" role="button">Statistics</a>
     </div>
     <ul class="list-group results"></ul>
   </nav>

@@ -1,3 +1,5 @@
+
+/* Search nav bar */
 #search-form{
   margin-bottom: 1%;
   position: relative;
@@ -8,19 +10,11 @@
   height: 1%;
 }
 
-.btn-green {
-  padding: 5%;
-}
-
-.dashboard-btn {
-  background-color: #00c301;
-  color: white;
-  margin: 0;
-  margin-right: 1%;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  line-height: 200%;
+.search-btn {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-left: 2%;
+  font-size:0.75vw;
 }
 
 /* Search results */
@@ -29,14 +23,8 @@
   top: 90%;
   left: 1%;
   z-index: 50;
-  width: 81.9%;
+  width: 73.6%;
 }
-
-.btn-green{
-  margin-right: 3%;
-}
-
-
 
 .results-item {
   width: 100%;
@@ -52,6 +40,7 @@
   max-height: 6%;
 }
 
+/* Results modal */
 .modal-btn {
   background-color: #00c301;
   color: white;
@@ -114,7 +103,7 @@
 }
 
 /* Small devices */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 990px) {
   #main {
     width: 100%;
     margin: auto;
@@ -141,25 +130,6 @@
     padding:2.5% !important;
   }
 
-  .dashboard-btn {
-    width: 22%;
-    margin: 0;
-    margin-left: 2%;
-    padding-left: 0.7%;
-    padding-right: 0.7%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    line-height: 200%;
-  }
-
-  /* .results {
-    position: absolute;
-    top: 120px;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-  } */
-
     /* Search results */
   .results {
     top: 80%;
@@ -172,6 +142,12 @@
     margin: 0;
     padding: 0;
 
+  }
+
+  /* Search nav buttons */
+  .search-btn{
+    margin-right:0;
+    font-size: 1rem;
   }
 
   #foodButton,
