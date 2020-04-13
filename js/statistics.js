@@ -6,8 +6,12 @@ $(document).ready(function () {
 
   // When a navigation tab link is clicked
   $(".nav-tabs>.nav-item>.nav-link").on("click", function (event) {
-    // Destroys previous chart
-    chart.destroy();
+    // Destroys previous chart if exists
+    if(chart){
+      chart.destroy();
+    }
+    // Clear graph error text
+    $('#graph-error').text("");
     // Prevent default events (navigating to different page)
     event.preventDefault();
     // Remove 'active' class from all tabb links
@@ -97,6 +101,11 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
+        // If no response print error
+        if(res.length == 0){
+          console.log("failed");
+          $('#graph-error').text("No Data");
+        }
         
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
@@ -151,7 +160,12 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
-
+        // If no response print error
+        if(res.length == 0){
+          console.log("failed");
+          $('#graph-error').text("No Data");
+        }
+        
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
 
@@ -206,12 +220,18 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
-
+        // If no response print error
+        if(res.length == 0){
+          console.log("failed");
+          $('#graph-error').text("No Data");
+        }
+        
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
 
         // Get keys of all values received (types - type(e.g. fat))
         const types = Object.keys(res[0]);
+
         // Remove the last element from types array (food_added)
         types.pop();
 

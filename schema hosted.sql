@@ -63,3 +63,220 @@ VALUES
     2000,
     60
   );
+-- EXAMPLE FOODS
+-- Insert example foods (today)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+  (
+    2,
+    'orange',
+    'fruit (2-7/8\" dia)',
+    1.00,
+    1.00,
+    68.60,
+    0.21,
+    1.40,
+    1.27,
+    17.56,
+    11.90,
+    NOW()
+  ),
+  (
+    2,
+    'ham sandwich',
+    'sandwich',
+    1.00,
+    1.00,
+    409.30,
+    13.89,
+    1478.98,
+    22.49,
+    47.71,
+    6.02,
+    NOW()
+  ),
+  (
+    2,
+    'curry chicken',
+    'cup',
+    1.00,
+    2.00,
+    243.26,
+    10.86,
+    72.77,
+    28.25,
+    7.52,
+    2.05,
+    NOW()
+  ),
+  (
+    2,
+    'coffee',
+    'cup',
+    1.00,
+    1.00,
+    2.37,
+    0.05,
+    4.74,
+    0.28,
+    0.00,
+    0.00,
+    NOW()
+  ),
+  (
+    2,
+    'chocolate',
+    'piece',
+    1.00,
+    1.00,
+    37.45,
+    2.08,
+    5.53,
+    0.54,
+    4.16,
+    3.61,
+    NOW()
+  );
+-- Insert example foods (Today -1)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+   (
+    2,
+    'orange',
+    'fruit (2-7/8\" dia)',
+    1.00,
+    1.00,
+    68.60,
+    0.21,
+    1.40,
+    1.27,
+    17.56,
+    11.90,
+    NOW() - INTERVAL 1 DAY
+  ),
+  (
+    2,
+    'curry chicken',
+    'cup',
+    1.00,
+    2.00,
+    243.26,
+    10.86,
+    72.77,
+    28.25,
+    7.52,
+    2.05,
+    NOW() - INTERVAL 1 DAY
+  ),
+  (
+    2,
+    'coffee',
+    'cup',
+    1.00,
+    1.00,
+    2.37,
+    0.05,
+    4.74,
+    0.28,
+    0.00,
+    0.00,
+    NOW() - INTERVAL 1 DAY
+  ),
+  (
+    2,
+    'chocolate',
+    'piece',
+    1.00,
+    1.00,
+    37.45,
+    2.08,
+    5.53,
+    0.54,
+    4.16,
+    3.61,
+    NOW() - INTERVAL 1 DAY
+  );
+-- Insert example foods (Today -2)
+INSERT INTO `food` (
+    user_id,
+    food_name,
+    food_serving_unit,
+    food_serving_base,
+    food_serving_quantity,
+    food_calories,
+    food_fat,
+    food_salt,
+    food_protein,
+    food_total_carbohydrates,
+    food_sugar,
+    food_added
+  )
+VALUES
+    (
+    2,
+    'orange',
+    'fruit (2-7/8\" dia)',
+    1.00,
+    1.00,
+    68.60,
+    0.21,
+    1.40,
+    1.27,
+    17.56,
+    11.90,
+    NOW() - INTERVAL 2 DAY
+  ),
+  (
+    2,
+    'curry chicken',
+    'cup',
+    1.00,
+    2.00,
+    243.26,
+    10.86,
+    72.77,
+    28.25,
+    7.52,
+    2.05,
+    NOW() - INTERVAL 2 DAY
+  ),
+  (
+    2,
+    'coffee',
+    'cup',
+    1.00,
+    1.00,
+    2.37,
+    0.05,
+    4.74,
+    0.28,
+    0.00,
+    0.00,
+    NOW() - INTERVAL 2 DAY
+  );

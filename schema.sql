@@ -83,7 +83,7 @@ INSERT INTO `food` (
   )
 VALUES
   (
-    1,
+    2,
     'orange',
     'fruit (2-7/8\" dia)',
     1.00,
@@ -97,7 +97,7 @@ VALUES
     NOW()
   ),
   (
-    1,
+    2,
     'ham sandwich',
     'sandwich',
     1.00,
@@ -111,7 +111,7 @@ VALUES
     NOW()
   ),
   (
-    1,
+    2,
     'curry chicken',
     'cup',
     1.00,
@@ -125,7 +125,7 @@ VALUES
     NOW()
   ),
   (
-    1,
+    2,
     'coffee',
     'cup',
     1.00,
@@ -139,7 +139,7 @@ VALUES
     NOW()
   ),
   (
-    1,
+    2,
     'chocolate',
     'piece',
     1.00,
@@ -169,7 +169,7 @@ INSERT INTO `food` (
   )
 VALUES
    (
-    1,
+    2,
     'orange',
     'fruit (2-7/8\" dia)',
     1.00,
@@ -183,7 +183,7 @@ VALUES
     NOW() - INTERVAL 1 DAY
   ),
   (
-    1,
+    2,
     'curry chicken',
     'cup',
     1.00,
@@ -197,7 +197,7 @@ VALUES
     NOW() - INTERVAL 1 DAY
   ),
   (
-    1,
+    2,
     'coffee',
     'cup',
     1.00,
@@ -211,7 +211,7 @@ VALUES
     NOW() - INTERVAL 1 DAY
   ),
   (
-    1,
+    2,
     'chocolate',
     'piece',
     1.00,
@@ -241,7 +241,7 @@ INSERT INTO `food` (
   )
 VALUES
     (
-    1,
+    2,
     'orange',
     'fruit (2-7/8\" dia)',
     1.00,
@@ -255,7 +255,7 @@ VALUES
     NOW() - INTERVAL 2 DAY
   ),
   (
-    1,
+    2,
     'curry chicken',
     'cup',
     1.00,
@@ -269,7 +269,7 @@ VALUES
     NOW() - INTERVAL 2 DAY
   ),
   (
-    1,
+    2,
     'coffee',
     'cup',
     1.00,

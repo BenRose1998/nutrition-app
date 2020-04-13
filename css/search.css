@@ -14,7 +14,11 @@
   padding-top: 4%;
   padding-bottom: 4%;
   margin-left: 2%;
-  font-size:0.75vw;
+  font-size:0.74vw;
+}
+
+.search-btn.active {
+  background-color: #00af00;
 }
 
 /* Search results */

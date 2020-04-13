@@ -41,7 +41,7 @@ function redirect($url)
 
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <div class="container" id="nav-content">
-      <a class="navbar-brand" href="index.php">Nutrition App</a>
+      <a class="navbar-brand" href="index.php">Nutritius</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

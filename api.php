@@ -186,5 +186,7 @@ function weeklyFood($pdo, $type){
 
   if ($foods) {
     print_r(json_encode($foods));
+  } else{
+    print_r(json_encode([]));
   }
 }

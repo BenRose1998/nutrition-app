@@ -53,7 +53,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="collapse navbar-collapse col-lg-3 col-md-4" id="navbarNavDropdown">
       <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">My Nutrition</a>
       <a href="view_food.php" class="btn btn-green col-lg-4 search-btn" role="button">View Food</a>
-      <a href="statistics.php" class="btn btn-green col-lg-4 search-btn" role="button">Statistics</a>
+      <a href="statistics.php" class="btn btn-green col-lg-4 search-btn active" role="button">Statistics</a>
     </div>
     <ul class="list-group results"></ul>
   </nav>
@@ -73,6 +73,7 @@ if (!isset($_SESSION['user_id'])) {
   </ul>
 
   <!-- HTML Canvas - Chart.js chart will be displayed here -->
+  <h2 id="graph-error"></h2>
   <div class="chart-container" style="position: relative; height:70vh; width:80vw">
     <canvas id="graph"></canvas>
   </div>
