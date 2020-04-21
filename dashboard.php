@@ -10,6 +10,7 @@ echo '<link rel="stylesheet" href="css/search.css">';
 
 if (!isset($_SESSION['user_id'])) {
   redirect('index.php');
+  exit();
 }
 
 ?>

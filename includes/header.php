@@ -58,14 +58,20 @@ function redirect($url)
         <ul class="navbar-nav navbar-right">
           <?php
           if (isset($_SESSION['user_id'])) {
+            // Add navigation link to 'My Nutrition' dashboard page
             echo '<li class="nav-item">';
             echo  '<a class="nav-link" href="dashboard.php">My Nutrition</a>';
             echo '</li>';
-
+            // Add navigation link to 'My Account' page
+            echo '<li class="nav-item">';
+            echo  '<a class="nav-link" href="account.php">My Account</a>';
+            echo '</li>';
+            // Add navigation link to log out
             echo '<li class="nav-item">';
             echo  '<a class="nav-link" href="logout.php">Logout (' . $_SESSION['username'] . ')</a>';
             echo '</li>';
           } else {
+            // Add navigation link to 'Login' page
             echo '<li class="nav-item">';
             echo  '<a class="nav-link" href="login.php">Login/Register</a>';
             echo '</li>';
