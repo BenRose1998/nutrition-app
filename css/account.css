@@ -1,0 +1,43 @@
+.form-group {
+  margin-bottom: 0;
+}
+
+#goals-title {
+  margin-top: 1.5%;
+}
+
+.error{
+  color: red;
+  text-align: center;
+  padding-top: 2%;
+}
+
+@media only screen and (max-width: 991px) {
+  button{
+    margin-top: 3%;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    margin: 0;
+    padding: 0;
+    max-width: 767px;
+  }
+
+  #main {
+    width: 100%;
+    padding: 3%;
+  }
+
+  .input-box {
+    padding: 0px;
+    padding-right: 2%;
+  }
+
+  .container-fluid {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

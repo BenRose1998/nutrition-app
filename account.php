@@ -182,43 +182,52 @@ $user = $stmt->fetch();
 
   <h4>Account Information</h4>
   <form action="account.php" method="POST">
-    <div class="row">
-      <div class="col-10 form-group">
-        <label for="username">Username <small>(max length: 20)</small></label>
-        <input type="text" class="form-control" id="username" name="username" value="<?php echo $user->user_username ?>">
+    <div class="row container-fluid">
+      <label for="username" class="col-12 input-box">Username <small>(max length: 20)</small></label>
+    </div>
+    <div class="row container-fluid">
+      <div class="col-lg-10 form-group input-box">
+        <input type="text" class="form-control" id="username" name="username"
+          value="<?php echo $user->user_username ?>">
       </div>
-      <button type="submit" class="col-2 btn btn-green">Change</button>
+      <button type="submit" class="col-lg-2 btn btn-green">Change</button>
     </div>
   </form>
 
   </br>
 
   <form action="account.php" method="POST">
-    <div class="row">
-      <div class="col-5 form-group">
-        <label for="password1">Old Password</label>
+    <div class="row container-fluid">
+      <label for="password1" class="col-5 input-box">Old Password</label>
+      <label for="password2" class="col-5 input-box">New Password <small>(min length: 8)</small></label>
+    </div>
+    <div class="row container-fluid">
+      <div class="col-5 form-group input-box">
         <input type="password" class="form-control" id="password1" name="password1">
       </div>
-      <div class="col-5 form-group">
-        <label for="password2">New Password <small>(min length: 8)</small></label>
+      <div class="col-5 form-group input-box">
         <input type="password" class="form-control" id="password2" name="password2">
       </div>
-      <button type="submit" class="col-2 btn btn-green">Change</button>
+      <button type="submit" class="col-sm-10 col-lg-2 btn btn-green">Change</button>
     </div>
   </form>
 
-  <h4>Nutrition Goals</h4>
+  <h4 id="goals-title">Nutrition Goals</h4>
   <form action="account.php" method="POST">
-    <div class="row">
-      <div class="col-5 form-group">
-        <label for="calories">Daily Calorie Goal</label>
-        <input type="text" class="form-control" id="calories" name="calories" value="<?php echo $user->user_calorie_goal ?>">
+    <div class="row container-fluid">
+      <label for="calories" class="col-5 input-box">Daily Calorie Goal</label>
+      <label for="protein" class="col-5 input-box">Daily Protein Goal (grams)</label>
+    </div>
+    <div class="row container-fluid">
+      <div class="col-5 form-group input-box">
+        <input type="text" class="form-control" id="calories" name="calories"
+          value="<?php echo $user->user_calorie_goal ?>">
       </div>
-      <div class="col-5 form-group">
-        <label for="protein">Daily Protein Goal</label>
-        <input type="text" class="form-control" id="protein" name="protein" value="<?php echo $user->user_protein_goal ?>">
+      <div class="col-5 form-group input-box">
+        <input type="text" class="form-control" id="protein" name="protein"
+          value="<?php echo $user->user_protein_goal ?>">
       </div>
-      <button type="submit" class="col-2 btn btn-green">Change</button>
+      <button type="submit" class="col-sm-10 col-lg-2 btn btn-green">Change</button>
     </div>
   </form>
 

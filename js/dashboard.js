@@ -18,7 +18,14 @@ function updateCharts() {
       d = JSON.parse(res);
 
       var cal_limit = 2000;
-      updateChartData(chart_calories, [Math.round(d.calories), d.calorie_goal]);
+      var cal_remaining = d.calorie_goal - Math.round(d.calories);
+
+      // Prevent remaining calories going below 0
+      if (cal_remaining < 0){
+        cal_remaining = 0;
+      }
+
+      updateChartData(chart_calories, [Math.round(d.calories), cal_remaining]);
       $("#calories-text").text(
         "Calories (" + Math.round(d.calories) + "/" + d.calorie_goal + ")"
       );
@@ -57,7 +64,9 @@ var chart_calories = new Chart(calories, {
       label: "calories",
       // Two data values, 1 - Calorie count, 2 - Calorie goal
       data: [0, 0],
-      backgroundColor: ["#00C301"]
+      backgroundColor: ["#00C301"],
+      borderColor: ["#FF0000"],
+      borderWidth: [3]
     }]
   },
   options: {

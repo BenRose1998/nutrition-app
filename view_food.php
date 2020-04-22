@@ -59,21 +59,21 @@ if (!isset($_SESSION['user_id'])) {
   </nav>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4">
+    <div class="col-1">
       <!-- <a href="" class="button" role="button" id="previous-btn">Previous</a> -->
-      <a href="" class="btn btn-green" role="button" id="previous-btn">Previous</a>
+      <a href="" class="btn btn-green" role="button" id="previous-btn"><i class="fas fa-arrow-left"></i></a>
     </div>
-    <h3 class="col-md-6 col-sm-4" id="date">Date</h3>
-    <div class="col-md-3 col-sm-4">
+    <h3 class="col-10" id="date">Date</h3>
+    <div class="col-1">
       <!-- <a href="" class="button" role="button" id="next-btn">Next</a> -->
-      <a href="" class="btn btn-green" role="button" id="next-btn">Next</a>
+      <a href="" class="btn btn-green" role="button" id="next-btn"><i class="fas fa-arrow-right"></i></a>
 
     </div>
   </div>
 
   <div class="row justify-content-center">
-    <p class="day-info col-lg-6" id="day-calories">Calories: 0</p>
-    <p class="day-info col-lg-6" id="day-protein">Protein: 0g</p>
+    <p class="day-info col-md-6" id="day-calories">Calories: 0</p>
+    <p class="day-info col-md-6" id="day-protein">Protein: 0g</p>
   </div>
 
   <!-- Desktop table -->
