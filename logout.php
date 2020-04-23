@@ -1,5 +1,7 @@
 <?php
+// Start a session
 session_start();
+// Destroy the session
 session_destroy();
 // Using the PHP method of redirecting user which only works before anything has been outputted to the page
 $url = 'index.php';

@@ -91,6 +91,7 @@ include('includes/footer.php');
 ?>
 
 <!-- Link script files -->
+<!-- Moment.js used - https://momentjs.com/ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <script src="js/statistics.js"></script>

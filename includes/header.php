@@ -5,7 +5,7 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 }
 
 // Function that can be used to redirect user using Javascript rather than manipulating the header
-// Changes header location is not possible after outputting anything so javascript needs to be used
+// Changing header location is not possible after outputting anything so javascript needs to be used
 function redirect($url)
 { ?>
   <script type='text/javascript'>
@@ -52,7 +52,7 @@ function redirect($url)
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
+            <a class="nav-link" href="guide.php">How it works</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-right">

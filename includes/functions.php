@@ -36,7 +36,7 @@ function checkUsernameExists($pdo, $username)
   $stmt->execute([$username]);
   $accounts = $stmt->fetchAll();
 
-  // If any accounts were returned return true
+  // If any accounts were returned return true (if not return false)
   if (count($accounts) === 0) {
     return false;
   } else {

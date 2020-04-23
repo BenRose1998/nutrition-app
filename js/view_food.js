@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log("View food script running");
 
   // Get food data from server
   function getFoodData() {
@@ -38,7 +37,8 @@ $(document).ready(function () {
     // Convert date to a unix timestamp
     timestamp = Math.round(date.getTime() / 1000);
 
-    // Request
+    // Send 'viewFood' GET request to back-end API, pass current timestamp
+    // Returns all food items for the last 7 days for this user
     $.ajax({
       type: "GET",
       url: "api.php?type=viewFood",
@@ -46,7 +46,7 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
-        console.log(res);
+        // If nothing is returned from request
         if (res.length == 0) {
           // Clear the table
           $("tbody").empty();
@@ -55,7 +55,8 @@ $(document).ready(function () {
           // Set list item (day-protein) to a default value of 0
           $("#day-protein").text("Protein: 0g");
         } else {
-          // Take last element from response object (data about that day)
+          // If values were returned
+          // Take last element from response object (data about that day, total calories & protein)
           var dayData = res.pop();
           // Populate the list item (day-calories) with total calories data
           $("#day-calories").text("Calories: " + dayData["total_calories"].toFixed(1));
@@ -64,8 +65,9 @@ $(document).ready(function () {
 
           // Clear the table
           $("tbody").empty();
-          // Foreach item in res object
+          // Foreach item in res object (as key & food)
           $.each(res, function (key, food) {
+            // Populate the mobile version of the table
             if ($(window).width() <= 768) {
               // Create a table row element and append all data as table data elements
               var $tr = $("<tr>")
@@ -78,6 +80,7 @@ $(document).ready(function () {
                 )
                 .appendTo("tbody");
             } else {
+              // Populate the desktop version of the table
               // Create a table row element and append all data as table data elements
               var $tr = $("<tr>")
                 .append(

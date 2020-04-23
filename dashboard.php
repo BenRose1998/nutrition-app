@@ -1,6 +1,5 @@
 <?php
 
-
 $header = 'Dashboard';
 
 include_once('includes/header.php');
@@ -8,13 +7,13 @@ include_once('includes/header.php');
 echo '<link rel="stylesheet" href="css/dashboard.css">';
 echo '<link rel="stylesheet" href="css/search.css">';
 
+// Check if user is logged in, if not redirects them and exits script
 if (!isset($_SESSION['user_id'])) {
   redirect('index.php');
   exit();
 }
 
 ?>
-
 
 <!-- Modal -->
 <div class="modal fade" id="quantity-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

@@ -8,6 +8,7 @@ require_once('includes/functions.php');
 
 echo '<link rel="stylesheet" href="css/account.css">';
 
+// If user is not logged in, redirect them and exit script
 if (!isset($_SESSION['user_id'])) {
   redirect('index.php');
   exit();
@@ -15,7 +16,6 @@ if (!isset($_SESSION['user_id'])) {
 
 // Default the error variable to null
 $error = null;
-
 
 // -----------------------------------------------------------------
 // USERNAME FORM
@@ -179,8 +179,6 @@ if (isset($_POST['calories']) && isset($_POST['protein'])) {
 ?>
 
 
-
-
 <!-- If an error is sent it is displayed -->
 <?php error: if ($error != null) : ?>
 <h3 class='error'><?php echo $error; ?></h3>
@@ -189,7 +187,7 @@ if (isset($_POST['calories']) && isset($_POST['protein'])) {
 <?php
 
 // Query
-// User's data is pulled from user table
+// User's username and nutrition goal data is pulled from users table
 $sql = 'SELECT user_username, user_calorie_goal, user_protein_goal
         FROM users
         WHERE user_id = ?

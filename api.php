@@ -23,11 +23,13 @@ if (isset($_GET['type'])) {
       getNutrition($pdo);
       break;
     case 'viewFood':
+      // Only if an timestamp value has been passed, call the viewFood function
       if(isset($_GET['timestamp'])){
         viewFood($pdo, $_GET['timestamp']);
       }
       break;
     case 'removeFood':
+      // Only if an id value has been passed, call the removeFood function
       if(isset($_GET['id'])){
         removeFood($pdo, $_GET['id']);
       }
@@ -51,6 +53,7 @@ if (isset($_GET['type'])) {
   http_response_code(400);
 }
 
+// Inserts posted food data into the database for this user
 function addFood($pdo)
 {
   if (isset($_POST) && !empty($_POST)) {
@@ -66,20 +69,28 @@ function addFood($pdo)
     $food_protein = $_POST['protein'];
     $food_total_carbohydrates = $_POST['carbohydrates'];
     $food_sugar = $_POST['sugar'];
+    // Create a date in SQL format
     $food_added = date('Y-m-d H:i:s');
 
     // Query
-    // User's data is inserted into the database
+    // Food data is inserted into the database
     $sql = 'INSERT INTO food (user_id, food_name, food_serving_unit, food_serving_base, food_serving_quantity, food_calories, food_fat, food_salt, food_protein, food_total_carbohydrates, food_sugar, food_added) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     // Prepare and execute statement
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$user_id, $food_name, $food_serving_unit, $food_serving_base, $food_serving_quantity, $food_calories, $food_fat, $food_salt, $food_protein, $food_total_carbohydrates, $food_sugar, $food_added]);
-    echo 'Food added';
+    // If query was successful
+    if($stmt->execute([$user_id, $food_name, $food_serving_unit, $food_serving_base, $food_serving_quantity, $food_calories, $food_fat, $food_salt, $food_protein, $food_total_carbohydrates, $food_sugar, $food_added])){
+      // CREATED - throw CREATED response code (201)
+      http_response_code(201);
+    }else{
+      // Error - throw server error response code (500)
+      http_response_code(500);
+    }
   }
 }
 
+// Returns total nutrition values and goals for a specified user today
 function getNutrition($pdo)
 {
   // Store user id
@@ -100,9 +111,13 @@ function getNutrition($pdo)
 
   if ($nutrition) {
     print_r(json_encode($nutrition));
+  }else{
+    // Not found - throw Not found error (404)
+    http_response_code(404);
   }
 }
 
+// Returns this user's food data for the specified day 
 function viewFood($pdo, $timestamp){
   // Convert passed date to SQL format
   $date = date('Y-m-d', $_GET['timestamp']);
@@ -111,11 +126,12 @@ function viewFood($pdo, $timestamp){
   $user_id = $_SESSION['user_id'];
 
   // Query
-  // User's food data for the specified day is pulled from the database
+  // User's food data for the specified day is pulled from the database (newest results first)
   $sql = 'SELECT *
           FROM calculated_nutrition
           WHERE user_id = ?
-          AND DATE(food_added) = ?';
+          AND DATE(food_added) = ?
+          ORDER BY food_added DESC';
 
   // Prepare and execute statement
   $stmt = $pdo->prepare($sql);
@@ -145,12 +161,13 @@ function viewFood($pdo, $timestamp){
   // Push an array of total calories and total protein to the end of the data array
   array_push($data, ["total_calories" => $totalCalories, "total_protein" => $totalProtein]);
   } else {
-    // No food found
+    // Food not found
   }
   // Encode data array to json and send as response to request
   echo json_encode($data);
 }
 
+// Removes a food item by ID (only if that food belongs to this user)
 function removeFood($pdo, $id){
   // Store user id
   $user_id = $_SESSION['user_id'];
@@ -163,7 +180,10 @@ function removeFood($pdo, $id){
 
   // Prepare and execute statement
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$id, $user_id]);
+  if($stmt->execute([$id, $user_id])){
+    // Done - throw OK code (200)
+    http_response_code(200);
+  }
 }
 
 // Return a list of specific nutritional values (e.g. protein) of all food items for a user in a week

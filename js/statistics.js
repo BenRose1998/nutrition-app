@@ -1,5 +1,10 @@
+// Script for 'statistics.php' page
+// Moment.js used - https://momentjs.com/
+// Chart.js used - https://www.chartjs.org/
+
 $(document).ready(function () {
 
+  // Store chart in outer scope
   var chart;
   // Run weekly calories graph function on page load
   weeklyNutrition();
@@ -7,7 +12,7 @@ $(document).ready(function () {
   // When a navigation tab link is clicked
   $(".nav-tabs>.nav-item>.nav-link").on("click", function (event) {
     // Destroys previous chart if exists
-    if(chart){
+    if (chart) {
       chart.destroy();
     }
     // Clear graph error text
@@ -24,26 +29,26 @@ $(document).ready(function () {
     // Execute different function depending on nav link selected (value stored in href attribute)
     switch ($(this).attr("href")) {
       case "calories":
-        console.log("calories requested");
+        // Display weekly calories chart
         weeklyCalories();
         break;
       case "protein":
-        console.log("protein requested");
+        // Display weekly protein chart
         weeklyProtein();
         break;
       case "nutrition":
-        console.log("nutrition requested");
+        // Display weekly nutrition chart
         weeklyNutrition();
         break;
       default:
-        console.log("nothing requested");
+        // Display weekly nutrition chart
         weeklyNutrition();
         break;
     }
   });
 
   // Gets dates for the last 7 days, returns an aray
-  function getDates(){
+  function getDates() {
     // Create a moment.js date object to store a date (initialised at today)
     let date = moment();
 
@@ -58,7 +63,7 @@ $(document).ready(function () {
       dates.push(date.date());
     }
 
-    // Reverse the array
+    // Reverse the array & return
     return dates.reverse();
   }
 
@@ -101,14 +106,12 @@ $(document).ready(function () {
       dataType: "json",
       headers: {},
       success: function (res) {
-		  
-		console.log(res);
+
         // If no response print error
-        if(res.length == 0){
-          console.log("failed");
+        if (res.length == 0) {
           $('#graph-error').text("No Data");
         }
-        
+
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
 
@@ -132,8 +135,8 @@ $(document).ready(function () {
           // Push this day's calories into the data array
           data.push(parseFloat(total).toFixed(2));
         });
-		console.log(data);
-        // Form chart
+
+        // Display chart
         chart = new Chart(graph, {
           type: 'bar',
           data: {
@@ -163,11 +166,11 @@ $(document).ready(function () {
       headers: {},
       success: function (res) {
         // If no response print error
-        if(res.length == 0){
+        if (res.length == 0) {
           console.log("failed");
           $('#graph-error').text("No Data");
         }
-        
+
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
 
@@ -192,7 +195,7 @@ $(document).ready(function () {
           data.push(parseFloat(total).toFixed(2));
         });
 
-        // Form chart
+        // Display chart
         chart = new Chart(graph, {
           type: 'bar',
           data: {
@@ -223,11 +226,11 @@ $(document).ready(function () {
       headers: {},
       success: function (res) {
         // If no response print error
-        if(res.length == 0){
+        if (res.length == 0) {
           console.log("failed");
           $('#graph-error').text("No Data");
         }
-        
+
         // Call getDates functions - returns an array of dates of last 7 days
         let dates = getDates();
 
@@ -256,15 +259,15 @@ $(document).ready(function () {
               // Check if the food's date matches the current date (in loop)
               if (food.food_added.date() == d) {
                 // If nutrition type is salt, divide value by 1000 to convert from milligrams to grams
-                if(type == 'salt'){
+                if (type == 'salt') {
                   // Add this food's value to the day's total
                   total += parseFloat(food[type] / 1000);
-                }else{
+                } else {
                   // Add this food's value to the day's total
                   total += parseFloat(food[type]);
                 }
-                
-                
+
+
               }
             });
             // Push this day's total into the type_data array
@@ -275,9 +278,9 @@ $(document).ready(function () {
         });
 
         console.log(data);
-        
 
-        // Form chart
+
+        // Display chart
         chart = new Chart(graph, {
           type: 'bar',
           data: {
