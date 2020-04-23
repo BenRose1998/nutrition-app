@@ -6,6 +6,17 @@ function updateChartData(chart, data) {
   chart.update();
 }
 
+// Update a charts border colour and width (default colour to grey and width to 0)
+function updateChartBorder(chart, colour = "rgba(0, 0, 0, 0.1)", width = 0) {
+  // Update chart's border colour
+  chart.data.datasets[0].borderColor[0] = colour;
+  // Update chart's border width
+  chart.data.datasets[0].borderWidth[0] = width;
+
+  // Update chart
+  chart.update();
+}
+
 function updateCharts() {
   // Request
   $.ajax({
@@ -17,18 +28,30 @@ function updateCharts() {
 
       d = JSON.parse(res);
 
-      var cal_limit = 2000;
+      // ----------------------------------------------------------------------
+      // Calorie Chart
       var cal_remaining = d.calorie_goal - Math.round(d.calories);
 
-      // Prevent remaining calories going below 0
-      if (cal_remaining < 0){
+      // Check if remaining calories is less than or equal to 0
+      if (cal_remaining <= 0) {
+        // Prevent remaining calories going below 0
         cal_remaining = 0;
+        // Set chart's border to demonstrate breaking nutrition goal
+        updateChartBorder(chart_calories, "#d62828", 5);
+      } else {
+        // Set chart's border to default
+        updateChartBorder(chart_calories);
       }
 
+      // Update calorie chart's data (calories eaten and calories remaining)
       updateChartData(chart_calories, [Math.round(d.calories), cal_remaining]);
+
       $("#calories-text").text(
         "Calories (" + Math.round(d.calories) + "/" + d.calorie_goal + ")"
       );
+
+      // ----------------------------------------------------------------------
+      // Nutrition Chart
 
       updateChartData(chart_nutrition, [
         Math.round(d.protein),
@@ -38,13 +61,28 @@ function updateCharts() {
         Math.round(d.salt / 1000)
       ]);
 
-      var pro_limit = 60;
-      updateChartData(chart_protein, [Math.round(d.protein), d.protein_goal]);
+      // ----------------------------------------------------------------------
+      // Protein Chart
+      var protein_remaining = d.protein_goal - Math.round(d.protein);
+
+      // Check if remaining protein is less than or equal to 0
+      if (protein_remaining <= 0) {
+        // Prevent remaining protein going below 0
+        protein_remaining = 0;
+        // Set chart's border to demonstrate breaking nutrition goal
+        updateChartBorder(chart_protein, "#d62828", 5);
+      } else {
+        // Set chart's border to default
+        updateChartBorder(chart_protein);
+      }
+
+      // Update protein chart's data (protein eaten and protein remaining)
+      updateChartData(chart_protein, [Math.round(d.protein), protein_remaining]);
       $("#protein-text").text(
         "Protein (" + Math.round(d.protein) + "/" + d.protein_goal + "g)"
       );
+      // ----------------------------------------------------------------------
 
-      console.log("updated charts");
     }
   });
 }
@@ -59,14 +97,14 @@ var calories = document.getElementById("calories").getContext("2d");
 var chart_calories = new Chart(calories, {
   type: "doughnut",
   data: {
-    labels: ["Calories eaten"],
+    labels: ["Calories eaten", "Calories remaining"],
     datasets: [{
       label: "calories",
       // Two data values, 1 - Calorie count, 2 - Calorie goal
       data: [0, 0],
       backgroundColor: ["#00C301"],
-      borderColor: ["#FF0000"],
-      borderWidth: [3]
+      borderColor: ["rgba(0, 0, 0, 0.1)"],
+      borderWidth: [0]
     }]
   },
   options: {
@@ -114,7 +152,9 @@ var chart_protein = new Chart(protein, {
     datasets: [{
       label: "protein",
       data: [0, 0],
-      backgroundColor: ["#00C301"]
+      backgroundColor: ["#00C301"],
+      borderColor: ["rgba(0, 0, 0, 0.1)"],
+      borderWidth: [0]
     }]
   },
   options: {

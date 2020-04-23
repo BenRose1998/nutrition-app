@@ -52,7 +52,17 @@ if (isset($_POST['username'])) {
 
     // Prepare and execute statement
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['username' => $username, 'user_id' => $_SESSION['user_id']]);
+    // If query was successful
+    if($stmt->execute(['username' => $username, 'user_id' => $_SESSION['user_id']])){
+      // Update username value in session
+      $_SESSION['username'] = $username;
+      // Redirect the user to their dashboard
+      redirect('dashboard.php');
+    }else{
+      // Print error
+      $error = "Error updating username";
+      goto error;
+    }
   }
 }
 
@@ -103,7 +113,15 @@ if (isset($_POST['password1']) && isset($_POST['password2'])) {
 
       // Prepare and execute statement
       $stmt = $pdo->prepare($sql);
-      $stmt->execute(['password' => $password, 'user_id' => $_SESSION['user_id']]);
+      // If query was successful
+      if($stmt->execute(['password' => $password, 'user_id' => $_SESSION['user_id']])){
+        // Redirect the user to their dashboard
+        redirect('dashboard.php');
+      }else{
+        // Print error
+        $error = "Error updating password";
+        goto error;
+      }
     }else{
       // Password incorrect
       $error = "Incorrect current password";
@@ -146,7 +164,15 @@ if (isset($_POST['calories']) && isset($_POST['protein'])) {
 
     // Prepare and execute statement
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['calorie_goal' => $calorie_goal, 'protein_goal' => $protein_goal, 'user_id' => $_SESSION['user_id']]);
+    // If query was successful
+    if($stmt->execute(['calorie_goal' => $calorie_goal, 'protein_goal' => $protein_goal, 'user_id' => $_SESSION['user_id']])){
+      // Redirect the user to their dashboard
+      redirect('dashboard.php');
+    }else{
+      // Print error
+      $error = "Error updating nutrition goals";
+      goto error;
+    }
   }
 }
 
