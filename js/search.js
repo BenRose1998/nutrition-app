@@ -33,6 +33,16 @@ $(document).ready(function () {
         if (typeof updateCharts == 'function') { 
           updateCharts(); 
         }
+        // Update 'View Food' table
+        // Only call this function if it exists (user is on the view food page)
+        if (typeof getFoodData == 'function') { 
+          getFoodData(); 
+        }
+        // Update 'Statistics' chart
+        // Only call this function if it exists (user is on the view food page)
+        if (typeof updateCurrentChart == 'function') { 
+          updateCurrentChart(); 
+        }
       }
     });
   }
