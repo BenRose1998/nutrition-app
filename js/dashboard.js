@@ -124,7 +124,7 @@ var chart_calories = new Chart(calories, {
     legend: {
       display: false
     },
-    tooltip: {
+    tooltips: {
       enabled: false
     }
   }
@@ -149,7 +149,7 @@ var chart_nutrition = new Chart(nutrition, {
     legend: {
       display: true,
       position: "bottom"
-    },
+    }
   }
 });
 
@@ -175,7 +175,7 @@ var chart_protein = new Chart(protein, {
     legend: {
       display: false
     },
-    tooltip: {
+    tooltips: {
       enabled: false
     }
   }

@@ -44,8 +44,7 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- Search bar nav -->
   <nav class="navbar navbar-light navbar-expand-lg" id="search-form">
-    <input class="col-lg-9 col-md-8 col-sm-8 m-0 p-0 form-control search" id="search" type="search"
-      placeholder="Search food...">
+    <input class="col-lg-9 col-md-8 col-sm-8 m-0 p-0 form-control search" id="search" placeholder="Search food...">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
