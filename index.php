@@ -6,7 +6,7 @@ include_once('includes/header.php');
 ?>
 <div class="">
   <section id="bigimage">
-    <div class="centre">
+    <div class="centre" alt="Various fruit">
       <h1>Nutritius</h1>
       <a href="register.php" class="btn btn-green" role="button" id="bigimageButton">Register</a>
     </div>

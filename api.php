@@ -152,7 +152,8 @@ function viewFood($pdo, $timestamp){
     foreach ($foods as $food) {
       $amount = $food->food_serving_quantity * $food->food_serving_base . " " . $food->food_serving_unit;
       // Create an array of all food values
-      $foodData = ["id" => $food->food_id, "amount" => $amount , "food" => $food->food_name, "calories" => $food->calories, "protein" => $food->protein, "date" => $food->food_added];
+      $foodData = ["id" => $food->food_id, "amount" => $amount , "food" => $food->food_name, "calories" => $food->calories, 
+      "protein" => $food->protein, "date" => $food->food_added];
       // Insert foodData array into the data array
       array_push($data, $foodData);
       $totalCalories += $food->calories;

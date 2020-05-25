@@ -65,7 +65,7 @@ if (isset($_POST) && !empty($_POST)) {
   <?php endif; ?>
 
   <form class="login-form" method="post" action="login.php">
-    <h2>Nutrition App</h2>
+    <h2>Login</h2>
     <div class="form-group">
       <label for="emailInput">Email address</label>
       <input type="email" class="form-control" name="email" id="emailInput">

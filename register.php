@@ -153,7 +153,7 @@ if (isset($_POST) && !empty($_POST)) {
       <input type="password" class="form-control" name="password" id="passwordInput">
     </div>
     <div class="form-group">
-      <label for="passwordInput">Repeat Password <small>(min length: 8)</small></label>
+      <label for="passwordInput2">Repeat Password <small>(min length: 8)</small></label>
       <input type="password" class="form-control" name="password2" id="passwordInput2">
     </div>
     <button type="submit" class="btn btn-green">Submit</button>
