@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_id'])) {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse col-lg-3 col-md-4" id="navbarNavDropdown">
-      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">My Nutrition</a>
+      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">Dashboard</a>
       <a href="view_food.php" class="btn btn-green col-lg-4 search-btn active" role="button">View Food</a>
       <a href="statistics.php" class="btn btn-green col-lg-4 search-btn" role="button">Statistics</a>
     </div>
@@ -116,5 +116,5 @@ include('includes/footer.php');
 ?>
 
 <!-- Link script files -->
-<script src="js/view_food.js"></script>
-<script src="js/search.js"></script>
+<script src="js/view_food.min.js"></script>
+<script src="js/search.min.js"></script>

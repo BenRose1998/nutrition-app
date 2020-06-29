@@ -50,14 +50,12 @@ if (!isset($_SESSION['user_id'])) {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse col-lg-3 col-md-4" id="navbarNavDropdown">
-      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">My Nutrition</a>
+      <a href="dashboard.php" class="btn btn-green col-lg-4 search-btn" role="button">Dashboard</a>
       <a href="view_food.php" class="btn btn-green col-lg-4 search-btn" role="button">View Food</a>
       <a href="statistics.php" class="btn btn-green col-lg-4 search-btn active" role="button">Statistics</a>
     </div>
     <ul class="list-group results"></ul>
   </nav>
-
-
 
   <ul class="nav nav-tabs nav-justified">
     <li class="nav-item">
@@ -77,12 +75,7 @@ if (!isset($_SESSION['user_id'])) {
     <canvas id="graph"></canvas>
   </div>
 
-
 </div>
-
-
-
-
 
 
 <?php
@@ -93,5 +86,5 @@ include('includes/footer.php');
 <!-- Moment.js used - https://momentjs.com/ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-<script src="js/statistics.js"></script>
-<script src="js/search.js"></script>
+<script src="js/statistics.min.js"></script>
+<script src="js/search.min.js"></script>

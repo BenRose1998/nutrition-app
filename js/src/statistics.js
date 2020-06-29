@@ -23,7 +23,7 @@ function updateCurrentChart() {
   }
 }
 
-// Gets dates for the last 7 days, returns an aray
+// Gets dates for the last 7 days, returns an array
 function getDates() {
   // Create a moment.js date object to store a date (initialised at today)
   let date = moment();
