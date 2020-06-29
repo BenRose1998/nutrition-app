@@ -4,6 +4,8 @@ $stylesheet = 'index.css';
 $header = 'Home';
 include_once('includes/header.php');
 ?>
+<!-- Big Image Used - https://www.pexels.com/photo/assorted-sliced-fruits-in-white-ceramic-bowl-1092730/ -->
+
 <div class="">
   <section id="bigimage">
     <div class="centre" alt="Various fruit">
